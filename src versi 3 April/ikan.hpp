@@ -21,6 +21,7 @@ class ikan{
 		void setTahap(int N);
 		void setFoodCounter(int N);
 		void setMati(bool B);
+		int moveCounter;
 
 	protected:
 		int hunger; //Nilai Kelaparan ikan

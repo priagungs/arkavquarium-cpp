@@ -33,7 +33,7 @@ class bendaHidup : public entitas {
     protected:
 		int x; //Absis entitas
 		int y; //Ordinat entitas
-        string direction; //atribut yang menyimpan kemana bendaHidup menghadap
+        double direction; //atribut yang menyimpan kemana bendaHidup menghadap
 };
 
 #endif

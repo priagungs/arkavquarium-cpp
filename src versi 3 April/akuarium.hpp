@@ -18,8 +18,6 @@ class akuarium {
 		//Getter
 		int getX();
 		int getY();
-		int getGuppyPeriod();
-		int getPiranhaPeriod();
 		petak getPetak(int x, int y); //Mengambil petak dari matriks[x,y]
 		//Mengambil suatu list dari suatu petak dari matriks[x,y]
         List<makanan> getListMakanan(int x, int y);
@@ -28,15 +26,6 @@ class akuarium {
         List<koin> getListKoin(int x, int y);
         List<siput> getListSiput(int x, int y);
 
-        //Prosedur menjalankan kehidupan di akuarium
-        //Mengiterasi semua entitas dari semua petak untuk melakukan aksinya move/eat
-        void processAkuarium();
-
-        //prosedur untuk mengenerate posisi (x y) random dan menciptakan entitas pada posisi tersebut
-		void randomGuppy();
-		void randomPiranha();
-		void randomMakanan();
-
 		//Searcher
 		petak searchMakanan(int x, int y); //Mengembalikan petak terdekat dari x y yang terdapat makanan
 		petak searchGuppy(int x, int y);  //Mengembalikan petak terdekat dari x y yang terdapat Guppy
@@ -44,8 +33,6 @@ class akuarium {
 	private:
 		int ukuranX; //Menyimpan ukuran panjang akuarium
 		int ukuranY; //Menyimpan ukuran lebar akuarium
-		int guppyPeriod; //Sebagai timer untuk melahirkan guppy baru
-		int piranhaPeriod; //Sebagai timer untuk melahirkan piranha baru
 		petak** matriks; //Matriks of petak
 };
 
