@@ -21,7 +21,7 @@ class bendaMati : public entitas {
 		void setY(int Y);
 
         //Prosedur untuk move lurus kebawah
-		void move();
+		void move(int,int);
 	protected :
 		int x; //Absis entitas
 		int y; //Ordinat entitas

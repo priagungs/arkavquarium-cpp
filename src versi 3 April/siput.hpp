@@ -16,6 +16,7 @@ class siput : public bendaHidup{
 		siput();
 
 		//Override moveTowardsTarget (Kecepatan berbeda dari bendaHidup lain)
+		void move(int,int);
         void moveTowardsTarget(int x, int y);
 };
 

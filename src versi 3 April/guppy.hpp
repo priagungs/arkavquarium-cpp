@@ -21,6 +21,7 @@ class guppy : public ikan, public bendaHidup{
 		//Menambahkan koin baru pada List<koin>
 		void generateKoin(List<koin>&);
 		void move(int x, int y);
+		void moveTowardsTarget(int x, int y);
 };
 
 #endif

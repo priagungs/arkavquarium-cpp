@@ -24,7 +24,7 @@ class bendaHidup : public entitas {
         void setDirection(string d);
 
         //Prosedur untuk bergerak secara acak
-        virtual void move() = 0;
+        virtual void move(int,int) = 0;
         //Bergerak menuju x y sebisa mungkin
         //Jika tidak bisa mencapai x y dalam satu kali gerakan, akan bergerak ke titik terdekat dari x y
         //yang bisa dicapai

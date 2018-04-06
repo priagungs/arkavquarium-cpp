@@ -1,8 +1,8 @@
-#ifndef CONTROLLER_H
-#define CONTROLER_H
-
 #include "List.hpp"
 #include "akuarium.hpp"
+
+#ifndef CONTROLLER_H
+#define CONTROLER_H
 
 class controller{
 public:
