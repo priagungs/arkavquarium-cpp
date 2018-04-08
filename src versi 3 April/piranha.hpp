@@ -15,15 +15,15 @@ class piranha : public ikan, public bendaHidup{
 
 	public:
 	    //Ctor
-		piranha();
-		
-		void move(int,int);
-        void moveTowardsTarget(int x, int y);
+	    piranha();
+		piranha(double, double);
+
+		void move(double,double);
+        void moveTowardsTarget(double x, double y);
 
 		void makan(List<guppy>&); //Membuat salah satu guppy hidup pada list menjadi mati
 		void generateKoin(List<koin>&); //Membuat koin baru dan menambahkannya ke List<koin>
-	private:
-		const static 
+		const static int speed = 2;
 };
 
 #endif

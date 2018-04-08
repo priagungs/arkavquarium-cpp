@@ -1,5 +1,6 @@
 #include "petak.hpp"
 #include "List.hpp"
+#include "oop.hpp"
 #include <iostream>
 using namespace std;
 
@@ -12,12 +13,10 @@ class akuarium {
 
 	public:
 	    //Ctor Dtor
-		akuarium(int x, int y);
+		akuarium();
 		~akuarium();
 
 		//Getter
-		int getX();
-		int getY();
 		petak getPetak(int x, int y); //Mengambil petak dari matriks[x,y]
 		//Mengambil suatu list dari suatu petak dari matriks[x,y]
         List<makanan> getListMakanan(int x, int y);
@@ -31,8 +30,6 @@ class akuarium {
 		petak searchGuppy(int x, int y);  //Mengembalikan petak terdekat dari x y yang terdapat Guppy
 		petak searchKoin(int x, int y); //Mengembalikan petak terdekat dari x y yang terdapat Koin
 	private:
-		int ukuranX; //Menyimpan ukuran panjang akuarium
-		int ukuranY; //Menyimpan ukuran lebar akuarium
 		petak** matriks; //Matriks of petak
 };
 

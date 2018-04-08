@@ -12,8 +12,8 @@ class koin : public bendaMati{
 
 	public:
 	    //ctor
-		koin(int, int);
-		koin(int, int, int);
+		koin(double, double);
+		koin(double, double, int);
 		//setter getter
 		int getNilai();
 		void setNilai(int n);

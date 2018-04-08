@@ -5,13 +5,13 @@
 using namespace std;
 
 //Ctor
-bendaHidup::bendaHidup() : entitas() {
+bendaHidup::bendaHidup() {
 	x = 0;
 	y = 0;
-	direction = "kanan";
+	direction = 0;
 }
 
-bendaHidup::bendaHidup(int X, int Y, string dir) {
+bendaHidup::bendaHidup(double X, double Y, double dir) {
 	x = X;
 	y = Y;
 	direction = dir;
@@ -19,10 +19,10 @@ bendaHidup::bendaHidup(int X, int Y, string dir) {
 
 
 //Setter Getter
-int bendaHidup::getX() {return x;}
-int bendaHidup::getY() {return y;}
-string bendaHidup::getDirection() {return direction;}
+double bendaHidup::getX() {return x;}
+double bendaHidup::getY() {return y;}
+double bendaHidup::getDirection() {return direction;}
 
-void bendaHidup::setX(int X) {x = X;}
-void bendaHidup::setY(int Y) {y = Y;}
-void bendaHidup::setDirection(string d) {direction = d;}
+void bendaHidup::setX(double X) {x = X;}
+void bendaHidup::setY(double Y) {y = Y;}
+void bendaHidup::setDirection(double d) {direction = d;}

@@ -15,11 +15,11 @@ class guppy : public ikan, public bendaHidup{
 
 	public:
 	    //Ctor
-		guppy();
+	    guppy();
+		guppy(double, double);
 		//Mengubah salah satu isi makanan edible pada list menjadi non edible
-		void move(int x, int y);
-		int getSpeed();
-	private:
+		void move(double, double);
+		void moveTowardsTarget(double, double);
 		const static int speed = 2; //bisa diubah value nya
 };
 

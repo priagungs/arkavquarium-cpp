@@ -1,19 +1,13 @@
 #include "ikan.hpp"
+#include <stdlib.h>
 #include <iostream>
 using namespace std;
 
 ikan::ikan() {
-	hunger = 10; //BERAPAAAA? EDIT LAGI INI
+	hunger = 50; //BERAPAAAA? EDIT LAGI INI
 	tahap = 1;
 	foodCounter = 0;
 	moveCounter = 0;
-	period = rand() % 10;
-	mati = false;
-}
-ikan::ikan(int h, int t, int f, bool m) {
-	hunger = h;
-	tahap = t;
-	foodCounter = 0;
 	period = rand() % 10;
 	mati = false;
 }

@@ -1,5 +1,4 @@
 #include "entitas.hpp"
-#include <string>
 #include <iostream>
 using namespace std;
 
@@ -13,26 +12,26 @@ class bendaHidup : public entitas {
     public:
         //Ctor
         bendaHidup();
-		bendaHidup(int,int,string);
+		bendaHidup(double,double,double);
 
         //Setter Getter
-		int getX();
-		int getY();
-        string getDirection();
-		void setX(int X);
-		void setY(int Y);
-        void setDirection(string d);
+		double getX();
+		double getY();
+        double getDirection();
+		void setX(double X);
+		void setY(double Y);
+        void setDirection(double d);
 
         //Prosedur untuk bergerak secara acak
-        virtual void move(int,int) = 0;
+        virtual void move(double,double) = 0;
         //Bergerak menuju x y sebisa mungkin
         //Jika tidak bisa mencapai x y dalam satu kali gerakan, akan bergerak ke titik terdekat dari x y
         //yang bisa dicapai
-        virtual void moveTowardsTarget(int x, int y) = 0;
+        virtual void moveTowardsTarget(double, double) = 0;
 
     protected:
-		int x; //Absis entitas
-		int y; //Ordinat entitas
+		double x; //Absis entitas
+		double y; //Ordinat entitas
         double direction; //atribut yang menyimpan kemana bendaHidup menghadap
 };
 

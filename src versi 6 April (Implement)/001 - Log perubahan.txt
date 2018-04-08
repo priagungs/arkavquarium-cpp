@@ -1,0 +1,12 @@
+Perubahan :
+
+- x y dipindah dari entitas ke bendahidup dan bendamati
+- ctor makanan berparameter x
+- ctor koin nambah parameter x, y
+
+Belum dicek :
+- guppy
+- piranha
+- petak
+- akuarium
+- list

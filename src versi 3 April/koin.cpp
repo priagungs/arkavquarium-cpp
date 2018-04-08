@@ -5,10 +5,11 @@
 using namespace std;
 
 //ctor
-koin::koin(int x, int y) : bendaMati(x,y){ 
+
+koin::koin(double x, double y) : bendaMati(x,y){
 	nilai = 0;
 }
-koin::koin(int x, int y, int n) : bendaMati(x,y) {
+koin::koin(double x, double y, int n) : bendaMati(x,y) {
 	nilai = n;
 }
 

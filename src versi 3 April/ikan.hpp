@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
 
 #ifndef IKAN_HPP
@@ -10,7 +11,6 @@ class ikan{
 	public:
 	    //Ctor
 		ikan();
-		ikan(int, int, int, bool);
 
 		//SetterGetter
 		int getHunger();
@@ -23,7 +23,7 @@ class ikan{
 		void setMati(bool B);
 		void incCounter();
 		void resetPeriod();
-		
+
 
 	protected:
 		int hunger; //Nilai Kelaparan ikan

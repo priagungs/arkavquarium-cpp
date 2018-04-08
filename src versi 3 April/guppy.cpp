@@ -8,16 +8,15 @@
 using namespace std;
 
 //Ctor
-guppy::guppy() {
-	
+guppy::guppy() : ikan(), bendaHidup() {
 }
 
-//Mengubah salah satu isi makanan edible pada list menjadi non edible
-void guppy::makan(List<makanan>& L) {
-	
+guppy::guppy(double X, double Y) : ikan(), bendaHidup(X, Y, 0) {
 }
 
-//Menambahkan koin baru pada List<koin>
-void guppy::generateKoin(List<koin>& L) {
-	
+void guppy::move(double X, double Y){
+    x += 20;
+}
+void guppy::moveTowardsTarget(double X, double Y) {
+    x += 20;
 }

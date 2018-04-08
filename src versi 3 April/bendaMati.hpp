@@ -12,19 +12,22 @@ class bendaMati : public entitas {
 	public:
 	    //Ctor
 		bendaMati();
-		bendaMati(int, int);
-		
+		bendaMati(double, double);
+
 		//Setter Getter
-		int getX();
-		int getY();
-		void setX(int X);
-		void setY(int Y);
+		double getX();
+		double getY();
+		double getSpeed();
+		void setX(double X);
+		void setY(double Y);
+
 
         //Prosedur untuk move lurus kebawah
-		void move(int,int);
+		void move(double,double);
 	protected :
-		int x; //Absis entitas
-		int y; //Ordinat entitas
+		double x; //Absis entitas
+		double y; //Ordinat entitas
+		const static double speed = 50;
 };
 
 #endif

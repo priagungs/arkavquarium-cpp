@@ -4,23 +4,24 @@
 using namespace std;
 
 //Ctor
-bendaMati::bendaMati() : entitas() {
+bendaMati::bendaMati() {
 	x = 0;
 	y = 0;
 }
-bendaMati::bendaMati(int X, int Y) {
+bendaMati::bendaMati(double X, double Y) {
 	x = X;
 	y = Y;
 }
 
 //Setter Getter
-int bendaMati::getX() {return x;}
-int bendaMati::getY() {return y;}
-void bendaMati::setX(int X) {x = X;}
-void bendaMati::setY(int Y) {y = Y;}
+double bendaMati::getX() {return x;}
+double bendaMati::getY() {return y;}
+double bendaMati::getSpeed() {return speed;}
+void bendaMati::setX(double X) {x = X;}
+void bendaMati::setY(double Y) {y = Y;}
 
 
 //Prosedur untuk move lurus kebawah
-void bendaMati::move() {
-	//kata nopal komentarin dulu
+void bendaMati::move(double, double) {
+    y += speed;
 }
