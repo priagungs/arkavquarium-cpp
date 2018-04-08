@@ -6,12 +6,15 @@ ikan::ikan() {
 	hunger = 10; //BERAPAAAA? EDIT LAGI INI
 	tahap = 1;
 	foodCounter = 0;
+	moveCounter = 0;
+	period = rand() % 10;
 	mati = false;
 }
 ikan::ikan(int h, int t, int f, bool m) {
 	hunger = h;
 	tahap = t;
 	foodCounter = 0;
+	period = rand() % 10;
 	mati = false;
 }
 
@@ -24,3 +27,12 @@ void ikan::setHunger(int N) {hunger = N;}
 void ikan::setTahap(int N) {tahap =N;}
 void ikan::setFoodCounter(int N) {foodCounter = N;}
 void ikan::setMati(bool B) {mati = B;}
+void ikan::incCounter(){
+	moveCounter++;
+}
+void ikan::resetPeriod(){
+	if(moveCounter == period){
+		moveCounter = 0;
+		period = rand() % 10;
+	}
+}

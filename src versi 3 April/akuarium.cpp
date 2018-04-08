@@ -2,15 +2,14 @@
 #include "petak.hpp"
 #include "List.hpp"
 #include <iostream>
+#include <math.h>
 using namespace std;	
 
 	
 akuarium::akuarium(int x, int y) {
 	ukuranX = x;
 	ukuranY = y;
-	guppyPeriod = 0;
-	piranhaPeriod = 0;
-	#matriks = new petak[y][x];
+	matriks = new petak[y][x];
 }
 
 akuarium::~akuarium() {
@@ -20,32 +19,89 @@ akuarium::~akuarium() {
 //Getter
 int akuarium::getX() {return ukuranX;}
 int akuarium::getY() {return ukuranY;}
-int akuarium::getGuppyPeriod() {return guppyPeriod;}
-int akuarium::getPiranhaPeriod() {return piranhaPeriod;}
 petak akuarium::getPetak(int x, int y) {
 	//Mengambil petak dari matriks[x,y]
-	return matriks[x][y];
+	return matriks[y][x];
 }
+
 //Mengambil suatu list dari suatu petak dari matriks[x,y]
-List<makanan> akuarium::getListMakanan(int x, int y) {}
-List<guppy> akuarium::getListGuppy(int x, int y) {}
-List<piranha> akuarium::getListPiranha(int x, int y) {}
-List<koin> akuarium::getListKoin(int x, int y) {}
-List<siput> akuarium::getListSiput(int x, int y) {}
-
-//Prosedur menjalankan kehidupan di akuarium
-//Mengiterasi semua entitas dari semua petak untuk melakukan aksinya move/eat
-void akuarium::processAkuarium() {}
-
-//prosedur untuk mengenerate posisi (x y) random dan menciptakan entitas pada posisi tersebut
-void akuarium::randomGuppy() {}
-void akuarium::randomPiranha() {}
-void akuarium::randomMakanan() {}
+List<makanan> akuarium::getListMakanan(int x, int y) {
+	return matriks[y][x].getListMakanan();
+}
+List<guppy> akuarium::getListGuppy(int x, int y) {
+	return matriks[y][x].getListGuppy();
+}
+List<piranha> akuarium::getListPiranha(int x, int y) {
+	return matriks[y][x].getListPiranha();
+}
+List<koin> akuarium::getListKoin(int x, int y) {
+	return matriks[y][x].getListKoin();
+}
+List<siput> akuarium::getListSiput(int x, int y) {
+	return matriks[y][x].getListSiput();
+}
 
 //Searcher
 //Mengembalikan petak terdekat dari x y yang terdapat makanan
-petak akuarium::searchMakanan(int x, int y) {}
+petak akuarium::searchMakanan(int x, int y) {
+	petak p;
+	jarak = -1;
+	for(int i=0; i<this->x; i++){
+		for(int j=0; j<this->y; j++){
+			if(!matriks[j][i].getListMakanan.isEmpty()){
+				if(jarak == -1 || sqrt(pow(x-i, 2) + pow(y-j, 2)) < jarak){
+					jarak = sqrt(pow(x-i, 2) + pow(y-j, 2));
+					p = matriks[j][i].getListMakanan();
+				}
+			}
+		}
+	}
+	if(jarak != -1){
+		return p;
+	}
+	else{
+		return NULL;
+	}
+}
 //Mengembalikan petak terdekat dari x y yang terdapat Guppy
-petak akuarium::searchGuppy(int x, int y) {}
+petak akuarium::searchGuppy(int x, int y) {
+	petak p;
+	jarak = -1;
+	for(int i=0; i<this->x; i++){
+		for(int j=0; j<this->y; j++){
+			if(!matriks[j][i].getListGuppy.isEmpty()){
+				if(jarak == -1 || sqrt(pow(x-i, 2) + pow(y-j, 2)) < jarak){
+					jarak = sqrt(pow(x-i, 2) + pow(y-j, 2));
+					p = matriks[j][i].getListGuppy();
+				}
+			}
+		}
+	}
+	if(jarak != -1){
+		return p;
+	}
+	else{
+		return NULL;
+	}
+}
  //Mengembalikan petak terdekat dari x y yang terdapat Koin
-petak akuarium::searchKoin(int x, int y) {}
+petak akuarium::searchKoin(int x, int y) {
+	petak p;
+	jarak = -1;
+	for(int i=0; i<this->x; i++){
+		for(int j=0; j<this->y; j++){
+			if(!matriks[j][i].getListKoin.isEmpty()){
+				if(jarak == -1 || sqrt(pow(x-i, 2) + pow(y-j, 2)) < jarak){
+					jarak = sqrt(pow(x-i, 2) + pow(y-j, 2));
+					p = matriks[j][i].getListKoin();
+				}
+			}
+		}
+	}
+	if(jarak != -1){
+		return p;
+	}
+	else{
+		return NULL;
+	}
+}

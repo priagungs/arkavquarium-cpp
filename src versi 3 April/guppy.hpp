@@ -17,11 +17,10 @@ class guppy : public ikan, public bendaHidup{
 	    //Ctor
 		guppy();
 		//Mengubah salah satu isi makanan edible pada list menjadi non edible
-		void makan(List<makanan>&);
-		//Menambahkan koin baru pada List<koin>
-		void generateKoin(List<koin>&);
 		void move(int x, int y);
-		void moveTowardsTarget(int x, int y);
+		int getSpeed();
+	private:
+		const static int speed = 2; //bisa diubah value nya
 };
 
 #endif

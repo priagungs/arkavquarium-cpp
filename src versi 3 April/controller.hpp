@@ -7,17 +7,24 @@
 class controller{
 public:
     //Mengiterasi semua entitas dari semua petak untuk melakukan aksinya move/eat
-    void processAkuarium(akuarium a);
+    controller(akuarium a);
+    void processAkuarium();
 
-    //prosedur untuk mengenerate posisi (x y) random dan menciptakan entitas pada posisi tersebut
-    void randomGuppy(akuarium a);
-    void randomPiranha(akuarium a);
-    void randomMakanan(akuarium a);
-    int getGuppyPeriod();
-    int getPiranhaPeriod();
+    void processGuppy();
+    void processPiranha();
+    void processMakanan();
+    void processSiput();
+    
+    void addKoin(int,int);
+    void addGuppy(int,int);
+    void addPiranha(int,int);
+    void addMakanan(int,int);
+
+    
+    
 private:
-    int guppyPeriod; //Sebagai timer untuk melahirkan guppy baru
-    int piranhaPeriod; //Sebagai timer untuk melahirkan piranha baru
+    akuarium a;
+    int periode_koin;
 };
 
 #endif

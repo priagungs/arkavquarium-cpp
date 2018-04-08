@@ -21,13 +21,17 @@ class ikan{
 		void setTahap(int N);
 		void setFoodCounter(int N);
 		void setMati(bool B);
-		int moveCounter;
+		void incCounter();
+		void resetPeriod();
+		
 
 	protected:
 		int hunger; //Nilai Kelaparan ikan
 		int tahap; //Tahap perkembangan ikan
 		int foodCounter; //Jumlah makanan yang pernah dimakan
 		bool mati; //Indikasi apakah ikan sudah mati atau tidak
+		int moveCounter;
+		int period;
 };
 
 #endif
