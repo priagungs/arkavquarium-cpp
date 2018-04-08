@@ -1,6 +1,11 @@
 #include "petak.hpp"
 #include "List.hpp"
 #include "oop.hpp"
+#include "piranha.hpp"
+#include "guppy.hpp"
+#include "makanan.hpp"
+#include "koin.hpp"
+#include "siput.hpp"
 #include <iostream>
 using namespace std;
 
@@ -16,21 +21,30 @@ class akuarium {
 		akuarium();
 		~akuarium();
 
-		//Getter
-		petak getPetak(int x, int y); //Mengambil petak dari matriks[x,y]
 		//Mengambil suatu list dari suatu petak dari matriks[x,y]
-        List<makanan> getListMakanan(int x, int y);
-        List<guppy> getListGuppy(int x, int y);
-        List<piranha> getListPiranha(int x, int y);
-        List<koin> getListKoin(int x, int y);
-        List<siput> getListSiput(int x, int y);
+    List<makanan> getListMakanan(int x, int y);
+    List<guppy> getListGuppy(int x, int y);
+    List<piranha> getListPiranha(int x, int y);
+    List<koin> getListKoin(int x, int y);
+    List<siput> getListSiput(int x, int y);
 
 		//Searcher
-		petak searchMakanan(int x, int y); //Mengembalikan petak terdekat dari x y yang terdapat makanan
-		petak searchGuppy(int x, int y);  //Mengembalikan petak terdekat dari x y yang terdapat Guppy
-		petak searchKoin(int x, int y); //Mengembalikan petak terdekat dari x y yang terdapat Koin
+		makanan searchMakanan(int , int); //Mengembalikan petak terdekat dari x y yang terdapat makanan
+		guppy searchGuppy(int , int );  //Mengembalikan petak terdekat dari x y yang terdapat Guppy
+		koin searchKoin(int , int ); //Mengembalikan petak terdekat dari x y yang terdapat Koin
+
+		void generateGuppy(); //Membuat guppy baru dan menambahkan ke listGuppy
+		void generatePiranha(); //Membuat piranha baru dan menambahkan ke listPiranha
+		void generateMakanan(); //membuat makanan baru dan menambakan ke listMakanan
+
+		void updatePetak(); //Menghapus makanan yang sudah dimakan dan ikan mati dari listnya
+
 	private:
-		petak** matriks; //Matriks of petak
+		List<piranha> listPiranha;
+		List<guppy> listGuppy;
+		List<koin> listKoin;
+		List<makanan> listMakanan;
+		List<siput> listSiput;
 };
 
 #endif
