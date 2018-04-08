@@ -1,5 +1,5 @@
 #include "bendaMati.hpp"
-//#include "List.hpp"
+#include "List.hpp"
 #include <iostream>
 
 #ifndef MAKANAN_HPP

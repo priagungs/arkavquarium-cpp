@@ -15,36 +15,35 @@ using namespace std;
 class akuarium {
 //Menjalankan kehidupan di ArkavQuarium
 //Dibuat sebagai matriks of petak
-
 	public:
 	    //Ctor Dtor
 		akuarium();
 		~akuarium();
 
 		//Mengambil suatu list dari suatu petak dari matriks[x,y]
-    List<makanan> getListMakanan(int x, int y);
-    List<guppy> getListGuppy(int x, int y);
-    List<piranha> getListPiranha(int x, int y);
-    List<koin> getListKoin(int x, int y);
-    List<siput> getListSiput(int x, int y);
+        List<makanan> getListMakanan();
+        List<guppy> getListGuppy();
+        List<piranha> getListPiranha();
+        List<koin> getListKoin();
+        siput getSiput();
 
 		//Searcher
-		makanan searchMakanan(int , int); //Mengembalikan petak terdekat dari x y yang terdapat makanan
-		guppy searchGuppy(int , int );  //Mengembalikan petak terdekat dari x y yang terdapat Guppy
-		koin searchKoin(int , int ); //Mengembalikan petak terdekat dari x y yang terdapat Koin
+		int searchMakanan(int , int); //Mengembalikan petak terdekat dari x y yang terdapat makanan
+		int searchGuppy(int , int );  //Mengembalikan petak terdekat dari x y yang terdapat Guppy
+		int searchKoin(int , int ); //Mengembalikan petak terdekat dari x y yang terdapat Koin
 
-		void generateGuppy(); //Membuat guppy baru dan menambahkan ke listGuppy
-		void generatePiranha(); //Membuat piranha baru dan menambahkan ke listPiranha
-		void generateMakanan(); //membuat makanan baru dan menambakan ke listMakanan
+		void generateGuppy(double, double); //Membuat guppy baru dan menambahkan ke listGuppy
+		void generatePiranha(double, double); //Membuat piranha baru dan menambahkan ke listPiranha
+		void generateMakanan(double, double); //membuat makanan baru dan menambakan ke listMakanan
 
 		void updatePetak(); //Menghapus makanan yang sudah dimakan dan ikan mati dari listnya
 
 	private:
-		List<piranha> listPiranha;
 		List<guppy> listGuppy;
-		List<koin> listKoin;
 		List<makanan> listMakanan;
-		List<siput> listSiput;
+		siput snail;
+		List<piranha> listPiranha;
+		List<koin> listKoin;
 };
 
 #endif

@@ -15,7 +15,7 @@ class guppy : public ikan, public bendaHidup{
 
 	public:
 	    //Ctor
-	    guppy();
+	  guppy();
 		guppy(double, double);
 		//Mengubah salah satu isi makanan edible pada list menjadi non edible
 		void move(double, double);

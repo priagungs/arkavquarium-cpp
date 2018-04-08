@@ -27,7 +27,7 @@ class bendaMati : public entitas {
 	protected :
 		double x; //Absis entitas
 		double y; //Ordinat entitas
-		const static double speed = 50;
+		double speed = 50;
 };
 
 #endif
