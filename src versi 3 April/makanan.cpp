@@ -17,3 +17,11 @@ void makanan::setEdible(bool b) {
     edible = b;
 }
 
+bool makanan::operator==(makanan m) {
+	return (getX() == m.getX() && getY() == m.getY());
+}
+
+bool makanan::operator!=(makanan m) {
+	return (getX() != m.getX() || getY() != m.getY());
+}
+

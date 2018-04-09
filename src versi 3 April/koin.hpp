@@ -18,6 +18,8 @@ class koin : public bendaMati{
 		//setter getter
 		int getNilai();
 		void setNilai(int n);
+		bool operator==(koin k);
+		bool operator!=(koin k);
 
 	private:
 		int nilai; //Nilai koin

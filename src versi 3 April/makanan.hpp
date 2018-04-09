@@ -11,6 +11,8 @@ public:
     makanan(double);
     bool isEdible();
     void setEdible(bool);
+	bool operator==(makanan m);
+	bool operator!=(makanan m);
 private:
     bool edible;
 };

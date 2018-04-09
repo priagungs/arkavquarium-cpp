@@ -18,3 +18,12 @@ koin::koin(double x, double y, int n) : bendaMati(x,y) {
 //setter getter
 int koin::getNilai() {return nilai;}
 void koin::setNilai(int n) {nilai = n;}
+
+//Operator overloading
+
+bool koin::operator==(koin k) {
+	return (getX() == k.getX() && getY() == k.getY() && getNilai() == k.getNilai());
+}
+bool koin::operator!=(koin k) {
+	return (getX() != k.getX() || getY() != k.getY() || getNilai() != k.getNilai());
+}

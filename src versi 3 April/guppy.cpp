@@ -29,3 +29,20 @@ void guppy::moveTowardsTarget(double x, double y, double time){ //gerak arah x s
     this->x += speed*cos(direction)*time;
     this->y += speed*sin(direction)*time;
 }
+
+bool guppy::operator==(guppy g) {
+	return (getX() == g.getX() && getY() == g.getY() 
+			&& getDirection() == g.getDirection() 
+			&& getHunger() == g.getHunger() 
+			&& getTahap() == g.getTahap() 
+			&& getfoodCounter() == g.getfoodCounter());
+}
+bool guppy::operator!=(guppy g) {
+	return (getX() != g.getX() || getY() != g.getY() 
+			|| getDirection() != g.getDirection() 
+			|| getHunger() != g.getHunger() 
+			|| getTahap() != g.getTahap() 
+			|| getfoodCounter() != g.getfoodCounter());
+
+}
+

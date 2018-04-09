@@ -20,6 +20,8 @@ class piranha : public ikan, public bendaHidup{
 
 		void moveTowardsTarget(double x,double y, double time);
 		void move(double time);
+		bool operator==(piranha p);
+		bool operator!=(piranha p);
 
 	private:
 		const static int speed = 20;
