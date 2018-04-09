@@ -12,8 +12,10 @@
 class controller{
 public:
     //Mengiterasi semua entitas dari semua petak untuk melakukan aksinya move/eat
-    controller(akuarium&);
+    controller(akuarium);
     void processAkuarium();
+
+    akuarium getAkuarium();
 
     void processGuppy();
     void processPiranha();
@@ -21,7 +23,7 @@ public:
     void processSiput();
 
     void addKoin(double,double,double);
-    void addGuppy();
+    void addGuppy(double X, double Y);
     void addPiranha();
     void addMakanan(double);
 

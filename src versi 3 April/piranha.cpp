@@ -28,18 +28,20 @@ void piranha::moveTowardsTarget(double x, double y, double time){ //gerak arah x
 }
 
 bool piranha::operator==(piranha p) {
-	return (getX() == p.getX() && getY() == p.getY() 
-			&& getDirection() == p.getDirection() 
-			&& getHunger() == p.getHunger() 
-			&& getTahap() == p.getTahap() 
-			&& getfoodCounter() == p.getfoodCounter());
+  return (
+    getX()==p.getX() && getY() == p.getY()
+    && getDirection() == p.getDirection()
+    && getHunger() == p.getHunger()
+    && getTahap() == p.getTahap()
+    && getfoodCounter() == p.getfoodCounter()
+  );
 }
+
 bool piranha::operator!=(piranha p) {
-	return (getX() != p.getX() || getY() != p.getY() 
-			|| getDirection() != p.getDirection() 
-			|| getHunger() != p.getHunger() 
-			|| getTahap() != p.getTahap() 
+	return (getX() != p.getX() || getY() != p.getY()
+			|| getDirection() != p.getDirection()
+			|| getHunger() != p.getHunger()
+			|| getTahap() != p.getTahap()
 			|| getfoodCounter() != p.getfoodCounter());
 
 }
-

@@ -15,7 +15,7 @@ class piranha : public ikan, public bendaHidup{
 
 	public:
 	    //Ctor
-	    piranha();
+	  piranha();
 		piranha(double, double);
 
 		void moveTowardsTarget(double x,double y, double time);
@@ -24,7 +24,7 @@ class piranha : public ikan, public bendaHidup{
 		bool operator!=(piranha p);
 
 	private:
-		const static int speed = 20;
+		constexpr static int speed = 20;
 };
 
 #endif

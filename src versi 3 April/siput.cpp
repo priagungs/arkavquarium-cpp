@@ -7,7 +7,7 @@
 using namespace std;
 
 //Ctor
-siput::siput() : bendaHidup(SCREEN_WIDTH/2, SCREEN_HEIGHT)  {}
+siput::siput() : bendaHidup(SCREEN_WIDTH/2, SCREEN_HEIGHT-50)  {}
 
 void siput::move(double time) {
 

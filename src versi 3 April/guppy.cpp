@@ -9,7 +9,7 @@
 using namespace std;
 
 //Ctor
-guppy::guppy() : ikan(), bendaHidup() {
+guppy::guppy() : ikan(), bendaHidup(0,0) {
 }
 
 guppy::guppy(double X, double Y) : ikan(), bendaHidup(X, Y) {
@@ -31,18 +31,17 @@ void guppy::moveTowardsTarget(double x, double y, double time){ //gerak arah x s
 }
 
 bool guppy::operator==(guppy g) {
-	return (getX() == g.getX() && getY() == g.getY() 
-			&& getDirection() == g.getDirection() 
-			&& getHunger() == g.getHunger() 
-			&& getTahap() == g.getTahap() 
+	return (getX() == g.getX() && getY() == g.getY()
+			&& getDirection() == g.getDirection()
+			&& getHunger() == g.getHunger()
+			&& getTahap() == g.getTahap()
 			&& getfoodCounter() == g.getfoodCounter());
 }
 bool guppy::operator!=(guppy g) {
-	return (getX() != g.getX() || getY() != g.getY() 
-			|| getDirection() != g.getDirection() 
-			|| getHunger() != g.getHunger() 
-			|| getTahap() != g.getTahap() 
+	return (getX() != g.getX() || getY() != g.getY()
+			|| getDirection() != g.getDirection()
+			|| getHunger() != g.getHunger()
+			|| getTahap() != g.getTahap()
 			|| getfoodCounter() != g.getfoodCounter());
 
 }
-

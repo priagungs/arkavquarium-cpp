@@ -4,11 +4,16 @@
 #include "List.hpp"
 #include <iostream>
 #include <math.h>
-using namespace std;	
+using namespace std;
 
 akuarium::akuarium(){
 	ukuranX = SCREEN_WIDTH;
 	ukuranY = SCREEN_HEIGHT;
+}
+
+akuarium::akuarium(int x, int y) {
+	ukuranX = x;
+	ukuranY = y;
 }
 
 akuarium::~akuarium() {}
@@ -97,7 +102,7 @@ void akuarium::searchKoin(int x, int y, int& xt, int& yt){ //Mengembalikan petak
 				yt = temp->info.getY();
 			}
 		} while(temp->next != NULL);
-	}	
+	}
 }
 
 //update status akuarium
@@ -136,7 +141,7 @@ void akuarium::updateGuppy(){
             if(g.getHunger() == 0){
                 g.setMati(true);
             }
-            
+
             //update eksistensi guppy
             temp = temp->next;
             if(!g.isMati()){

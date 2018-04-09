@@ -2,9 +2,13 @@
 #define NILAI_KOIN_DEFAULT 100
 #define PERIODE_KOIN 5
 
-controller::controller(akuarium &a){
+controller::controller(akuarium a){
     this->a = a;
     this->timestamp = 0;
+}
+
+akuarium controller::getAkuarium() {
+  return a;
 }
 
 void controller::addKoin(double x, double y, double nilai){
@@ -16,8 +20,8 @@ void controller::setTime(double timestamp){
     this->timestamp = timestamp;
 }
 
-void controller::addGuppy(){
-    guppy g;
+void controller::addGuppy(double X, double Y){
+    guppy g(X,Y);
     a.getListGuppy().add(g);
 }
 
@@ -32,9 +36,9 @@ void controller::addMakanan(double x){
 }
 
 void controller::processAkuarium(){
-    a.updateAkuarium();
+    //a.updateAkuarium();
     processPiranha();
-    processGuppy();
+    //processGuppy();
     processMakanan();
     processSiput();
 }
@@ -43,7 +47,6 @@ void controller::processGuppy(){
     // update status semua guppy yang ada
     if(!a.getListGuppy().isEmpty()){
         elmt<guppy>* temp = a.getListGuppy().first;
-        temp = a.getListGuppy().first;
         do{
             guppy g = temp->info;
             // mencari makan untuk yang sudah lapar
@@ -66,5 +69,19 @@ void controller::processGuppy(){
     }
 }
 
+void controller::processMakanan() {
+    if (!a.getListMakanan().isEmpty()) {
+      elmt<makanan>* temp = a.getListMakanan().first;
+      do {
+        temp->info.move(0.01);
+        temp = temp->next;
+      } while (temp != NULL);
+    }
+}
 
+void controller::processPiranha() {
 
+}
+void controller::processSiput(){
+
+}

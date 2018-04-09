@@ -53,7 +53,7 @@ public:
 		if (first->info == element) {	//elemen ada di elemen pertama
 			elmt<T>* del = first;
 			if (first-> next != NULL) {	//list memiliki lebih dari satu elemen
-				elmt<T>* temp = first->next;
+				//elmt<T>* temp = first->next;
 				first->info = first->next->info;
 				first->next = first->next->next;
 			} else {					//list memiliki satu elemen

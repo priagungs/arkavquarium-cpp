@@ -7,16 +7,15 @@
 
 const double speed = 50; // pixels per second
 
-// void drawAquarium(akuarium tank);
+void drawAquarium(akuarium tank);
 
 int main( int argc, char* args[] )
 {
-    akuarium tank(SCREEN_WIDTH, SCREEN_HEIGHT);
-    controller control(tank);
-    control.addGuppy();
-    control.addGuppy();
-    control.addGuppy();
-    
+    controller control(akuarium(SCREEN_WIDTH, SCREEN_HEIGHT));
+    control.addGuppy(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+    control.addGuppy(SCREEN_HEIGHT/2, SCREEN_WIDTH/2);
+    control.addGuppy(SCREEN_WIDTH/2, SCREEN_WIDTH/2);
+
     init();
     // Menghitung FPS
     int frames_passed = 0;
@@ -71,9 +70,8 @@ int main( int argc, char* args[] )
                 cy = SCREEN_HEIGHT / 2;
                 cx = SCREEN_WIDTH / 2;
                 break;
-            // x untuk keluar
             case SDLK_x:
-                running = false;
+                control.addMakanan(SCREEN_WIDTH/2);
                 break;
             }
         }
@@ -88,13 +86,14 @@ int main( int argc, char* args[] )
             fpc_start = now;
             frames_passed = 0;
         }
+        control.processAkuarium();
 
         // Gambar ikan di posisi yang tepat.
         clear_screen();
         draw_text("Panah untuk bergerak, r untuk reset, x untuk keluar", 18, 10, 10, 0, 0, 0);
         draw_text(fps_text, 18, 10, 30, 0, 0, 0);
         draw_image("ikan.png", cx, cy);
-        // drawAquarium(tank);
+        drawAquarium(control.getAkuarium());
         update_screen();
     }
 
@@ -104,15 +103,21 @@ int main( int argc, char* args[] )
 }
 
 void drawAquarium(akuarium tank) {
-    // draw_image("snail.png", tank.getSiput().getX(), tank.getSiput().getY());
+    draw_image("snail.png", tank.getSiput().getX(), tank.getSiput().getY());
 
-    // if (!tank.getListGuppy().isEmpty()) {
-    //     elmt<guppy>* current = tank.getListGuppy().first;
-    //     while (current != NULL) {
-    //         draw_image("ikan.png", current->info.getX(), current->info.getY());
-    //         current = current->next;
-    //     }
-    // }
+    if (!tank.getListGuppy().isEmpty()) {
+        elmt<guppy>* currentGuppy = tank.getListGuppy().first;
+        while (currentGuppy != NULL) {
+            draw_image("guppykanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+            currentGuppy = currentGuppy->next;
+        }
+    }
 
-
+    if (!tank.getListMakanan().isEmpty()) {
+        elmt<makanan>* currentFood = tank.getListMakanan().first;
+        while (currentFood != NULL) {
+            draw_image("upil.png", currentFood->info.getX(), currentFood->info.getY());
+            currentFood = currentFood->next;
+        }
+    }
 }
