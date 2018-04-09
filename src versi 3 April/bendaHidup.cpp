@@ -1,20 +1,21 @@
 #include "bendaHidup.hpp"
 #include "entitas.hpp"
+#include "oop.hpp"
 #include <string>
 #include <iostream>
 using namespace std;
 
 //Ctor
 bendaHidup::bendaHidup() {
-	x = 0;
-	y = 0;
-	direction = 0;
+	x = rand()%SCREEN_WIDTH;
+	y = rand()%SCREEN_HEIGHT;
+	direction = rand() % 7;
 }
 
-bendaHidup::bendaHidup(double X, double Y, double dir) {
+bendaHidup::bendaHidup(double X, double Y) {
 	x = X;
 	y = Y;
-	direction = dir;
+	direction = rand() % 7;
 }
 
 

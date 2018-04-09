@@ -13,11 +13,10 @@ int main( int argc, char* args[] )
 {
     akuarium tank(SCREEN_WIDTH, SCREEN_HEIGHT);
     controller control(tank);
-    control.addGuppy(SCREEN_HEIGHT/4, SCREEN_WIDTH/4);
-    control.addGuppy(SCREEN_HEIGHT/5, SCREEN_WIDTH/5);
-    control.addGuppy(SCREEN_HEIGHT*0.8, SCREEN_WIDTH*0.8);
-    cout << tank.getListGuppy(SCREEN_HEIGHT/4, SCREEN_WIDTH/4).isEmpty();
-
+    control.addGuppy();
+    control.addGuppy();
+    control.addGuppy();
+    
     init();
     // Menghitung FPS
     int frames_passed = 0;

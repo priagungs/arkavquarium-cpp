@@ -7,27 +7,19 @@
 using namespace std;
 
 //Ctor
-siput::siput() : bendaHidup(SCREEN_WIDTH/2, SCREEN_HEIGHT, 0)  {}
+siput::siput() : bendaHidup(SCREEN_WIDTH/2, SCREEN_HEIGHT)  {}
 
-void siput::move() {
-	
+void siput::move(double time) {
+
 }
 
 
 //Override moveTowardsTarget (Kecepatan berbeda dari bendaHidup lain)
-void siput::moveTowardsTarget(double x, double y) {
-	//if (x > getX()) {
-		//if (x-getX() <= /* MaxMove */) {
-			//setX(x);
-		//} else {
-			//setX(/*MaxMove*/);
-	//	}
-	//} else {
-		//setDirection("kiri");
-		//if (getX()-x <= /*MaxMove*/) {
-			//setX(x);
-		//} else {
-		//	setX(/*MaxMove*/);
-		//}
-	//}
+void siput::moveTowardsTarget(double x, double y, double t) {
+	if(x > this->x){
+		this->x += x*t*speed;
+	}
+	else if(x < this->x){
+		this->x -= x*t*speed;
+	}
 }

@@ -12,7 +12,7 @@ class bendaHidup : public entitas {
     public:
         //Ctor
         bendaHidup();
-		bendaHidup(double,double,double);
+		bendaHidup(double,double);
 
         //Setter Getter
 		double getX();
@@ -23,12 +23,12 @@ class bendaHidup : public entitas {
         void setDirection(double d);
 
         //Prosedur untuk bergerak secara acak
-        //menuju direction
-        virtual void move() = 0;
+        virtual void move(double time) = 0;
+
         //Bergerak menuju x y sebisa mungkin
         //Jika tidak bisa mencapai x y dalam satu kali gerakan, akan bergerak ke titik terdekat dari x y
         //yang bisa dicapai
-        virtual void moveTowardsTarget(double, double) = 0;
+        virtual void moveTowardsTarget(double x, double y, double time) = 0;
 
     protected:
 		double x; //Absis entitas

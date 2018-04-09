@@ -21,11 +21,14 @@ public:
     void processSiput();
 
     void addKoin(double,double,double);
-    void addGuppy(double,double);
-    void addPiranha(double,double);
+    void addGuppy();
+    void addPiranha();
     void addMakanan(double);
+
+    void setTime(double time);
 private:
     akuarium a;
+    double timestamp;
 };
 
 #endif

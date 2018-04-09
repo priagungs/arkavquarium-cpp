@@ -23,11 +23,11 @@ class bendaMati : public entitas {
 
 
         //Prosedur untuk move lurus kebawah
-		void move(double,double);
+		void move(double time);
 	protected :
 		double x; //Absis entitas
 		double y; //Ordinat entitas
-		static const double speed = 50;
+		static constexpr double speed = 50;
 };
 
 #endif

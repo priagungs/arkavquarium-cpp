@@ -18,10 +18,11 @@ class piranha : public ikan, public bendaHidup{
 	    piranha();
 		piranha(double, double);
 
-		void moveTowardsTarget(double,double);
-		void move();
+		void moveTowardsTarget(double x,double y, double time);
+		void move(double time);
 
-		const static int speed = 2;
+	private:
+		const static int speed = 20;
 };
 
 #endif

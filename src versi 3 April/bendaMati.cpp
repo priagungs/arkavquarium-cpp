@@ -22,6 +22,6 @@ void bendaMati::setY(double Y) {y = Y;}
 
 
 //Prosedur untuk move lurus kebawah
-void bendaMati::move(double, double) {
-    y += speed;
+void bendaMati::move(double time) {
+    y += speed*time;
 }

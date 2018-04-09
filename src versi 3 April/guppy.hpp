@@ -18,9 +18,11 @@ class guppy : public ikan, public bendaHidup{
 	  	guppy();
 		guppy(double, double);
 		//Mengubah salah satu isi makanan edible pada list menjadi non edible
-		void move(double, double);
-		void moveTowardsTarget(double, double);
-		const static int speed = 2; //bisa diubah value nya
+		void move(double time); // gerak arah random selama time
+		void moveTowardsTarget(double x, double y, double time); //gerak arah x selama time
+	
+	private:
+		const static int speed = 20; //bisa diubah value nya
 };
 
 #endif

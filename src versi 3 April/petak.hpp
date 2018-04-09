@@ -30,6 +30,7 @@ class petak {
 		void generateMakanan(makanan); //membuat makanan baru dan menambakan ke listMakanan
 
         void updatePetak(); //Menghapus makanan yang sudah dimakan dan ikan mati dari listnya
+    
     private:
         //List-list dari entitas yang terdapat pada suatu petak
         List<piranha> listPiranha;

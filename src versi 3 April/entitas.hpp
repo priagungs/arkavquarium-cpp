@@ -10,7 +10,7 @@ class entitas {
 
 	public:
 	    //Prosedur untuk bergerak
-		virtual void move(double,double)=0;
+		virtual void move(double time)=0;
 };
 
 #endif
