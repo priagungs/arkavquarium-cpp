@@ -9,7 +9,8 @@ using namespace std;
 //Ctor
 siput::siput() : bendaHidup(SCREEN_WIDTH/2, SCREEN_HEIGHT, 0)  {}
 
-void siput::move(double,double) {
+void siput::move() {
+	
 }
 
 

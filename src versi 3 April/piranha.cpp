@@ -11,16 +11,10 @@ piranha::piranha() : ikan(), bendaHidup() {};
 piranha::piranha(double X, double Y) : ikan(), bendaHidup(X, Y, 0) {};
 
 
-void piranha::move(double,double) {
-
-}
-void piranha::moveTowardsTarget(double x, double y) {
+void piranha::move() {
 
 }
 
-void piranha::makan(List<guppy>&) { //Membuat salah satu guppy hidup pada list menjadi mati
-
-}
-void piranha::generateKoin(List<koin>&) {//Membuat koin baru dan menambahkannya ke List<koin>
-
+void piranha::moveTowardsTarget(double x, double y){
+    
 }

@@ -18,11 +18,9 @@ class piranha : public ikan, public bendaHidup{
 	    piranha();
 		piranha(double, double);
 
-		void move(double,double);
-        void moveTowardsTarget(double x, double y);
+		void moveTowardsTarget(double,double);
+		void move();
 
-		void makan(List<guppy>&); //Membuat salah satu guppy hidup pada list menjadi mati
-		void generateKoin(List<koin>&); //Membuat koin baru dan menambahkannya ke List<koin>
 		const static int speed = 2;
 };
 

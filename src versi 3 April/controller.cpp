@@ -27,14 +27,36 @@ void controller::addMakanan(double x){
 }
 
 void controller::processGuppy(){
+    // update status semua guppy yang ada
     for(int i=0; i<a.getX(); i++){
         for(int j=0; j<a.getY(); j++){
             if(!a.getListGuppy(i,j).isEmpty()){
-               // ceritanya temp isinya element tiap list
-               guppy temp;
-               if(temp.getHunger() == 0){
+                a.getPetak(i,j).updatePetak();
+            }
+        }
+    }
 
-               }
+    for(int i=0; i<a.getX(); i++){
+        for(int j=0; j<a.getY(); j++){
+            if(!a.getListGuppy(i,j).isEmpty()){
+                elmt<guppy>* temp = getListGuppy(i,j).first;
+                do{
+                    guppy g = temp->info;
+                    // mencari makan untuk yang sudah lapar
+                    if(p.getHungerState()){
+                        int x,y;
+                        a.searchMakanan(i,j,x,y);
+                        g.moveTowardsTarget(x,y);
+                    }
+                    //bergerak random jika tidak lapar
+                    else{
+                        
+                    }
+
+                    // mengeluarkan koin bagi yang siap mengeluarkan koin
+
+
+                } while(temp != NULL);
             }
         }
     }

@@ -7,7 +7,7 @@
 
 const double speed = 50; // pixels per second
 
-void drawAquarium(akuarium tank);
+// void drawAquarium(akuarium tank);
 
 int main( int argc, char* args[] )
 {

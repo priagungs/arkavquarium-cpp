@@ -19,11 +19,11 @@ class petak {
 		petak();
 
 		//getter
-		List<piranha> getListPiranha();
-        List<guppy> getListGuppy();
-        List<koin> getListKoin();
-        List<makanan> getListMakanan();
-        List<siput> getListSiput();
+		List<piranha>& getListPiranha();
+        List<guppy>& getListGuppy();
+        List<koin>& getListKoin();
+        List<makanan>& getListMakanan();
+        List<siput>& getListSiput();
 
 		void generateGuppy(guppy); //Membuat guppy baru dan menambahkan ke listGuppy
 		void generatePiranha(piranha); //Membuat piranha baru dan menambahkan ke listPiranha
@@ -38,7 +38,8 @@ class petak {
         List<makanan> listMakanan;
         List<siput> listSiput;
         void updateMakanan();
-        void updateIkan();
+        void updateGuppy();
+        void updatePiranha();
 };
 
 #endif

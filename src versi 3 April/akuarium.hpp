@@ -19,26 +19,25 @@ class akuarium {
 		//Getter
 		int getX();
 		int getY();
-		petak getPetak(int x, int y); //Mengambil petak dari matriks[x,y]
+		petak& getPetak(int x, int y); //Mengambil petak dari matriks[x,y]
 		//Mengambil suatu list dari suatu petak dari matriks[x,y]
-        List<makanan> getListMakanan(int x, int y);
-        List<guppy> getListGuppy(int x, int y);
-        List<piranha> getListPiranha(int x, int y);
-        List<koin> getListKoin(int x, int y);
-        List<siput> getListSiput(int x, int y);
+        List<makanan>& getListMakanan(int x, int y);
+        List<guppy>& getListGuppy(int x, int y);
+        List<piranha>& getListPiranha(int x, int y);
+        List<koin>& getListKoin(int x, int y);
+        List<siput>& getListSiput(int x, int y);
 
 		//Searcher
 		bool koinAvailable();
 		bool guppyAvailable();
 		bool makananAvailable();
 
-		petak searchMakanan(int x, int y); //Mengembalikan petak terdekat dari x y yang terdapat makanan
-		petak searchGuppy(int x, int y);  //Mengembalikan petak terdekat dari x y yang terdapat Guppy
-		petak searchKoin(int x, int y); //Mengembalikan petak terdekat dari x y yang terdapat Koin
+		void searchMakanan(int x, int y, int& xt, int& yt); //Mengembalikan petak terdekat dari x y yang terdapat makanan
+		void searchGuppy(int x, int y, int& xt, int& yt);  //Mengembalikan petak terdekat dari x y yang terdapat Guppy
+		void searchKoin(int x, int y, int& xt, int& yt); //Mengembalikan petak terdekat dari x y yang terdapat Koin
 	private:
 		int ukuranX; //Menyimpan ukuran panjang akuarium
 		int ukuranY; //Menyimpan ukuran lebar akuarium
-		petak** matriks; //Matriks of petak
 };
 
 #endif

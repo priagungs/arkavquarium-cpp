@@ -10,6 +10,7 @@ ikan::ikan() {
 	moveCounter = 0;
 	period = rand() % 10;
 	mati = false;
+	hungerState = false;
 }
 
 //SetterGetter
@@ -23,6 +24,17 @@ void ikan::setFoodCounter(int N) {foodCounter = N;}
 void ikan::setMati(bool B) {mati = B;}
 void ikan::incCounter(){
 	moveCounter++;
+}
+bool ikan::getHungerState(){
+	return hungerState;
+}
+void ikan::setHungerState(){
+	if(hunger < 10){ //bisa disesuaikan angka nya
+		hungerState = true;
+	}
+	else{
+		hungerState = false;
+	}
 }
 void ikan::resetPeriod(){
 	if(moveCounter == period){
