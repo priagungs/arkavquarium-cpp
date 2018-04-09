@@ -24,6 +24,19 @@ int main(){
 		cout << "m1 menjadi tidak edible" << endl;
 	}
 	
+	cout << "m1 mempunyai nilai x " << m1.getX() << endl;
+	cout << "m2 mempunyai nilai x " << m2.getX() << endl;
+	
+	if(m1 != m2){
+		cout << "m1 dan m2 tidak sama" << endl;
+	}
+	if(m1 == m2){
+		cout << "m1 dan m2 sama" << endl;
+	}
+	
+	m1.setX(2);
+	cout << "sekarang m1 mempunyai nilai x " << m1.getX() << endl;
+	
 	if(m1 != m2){
 		cout << "m1 dan m2 tidak sama" << endl;
 	}
