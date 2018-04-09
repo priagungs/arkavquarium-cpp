@@ -25,9 +25,9 @@ class petak {
         List<makanan> getListMakanan();
         List<siput> getListSiput();
 
-		void generateGuppy(); //Membuat guppy baru dan menambahkan ke listGuppy
-		void generatePiranha(); //Membuat piranha baru dan menambahkan ke listPiranha
-		void generateMakanan(); //membuat makanan baru dan menambakan ke listMakanan
+		void generateGuppy(guppy); //Membuat guppy baru dan menambahkan ke listGuppy
+		void generatePiranha(piranha); //Membuat piranha baru dan menambahkan ke listPiranha
+		void generateMakanan(makanan); //membuat makanan baru dan menambakan ke listMakanan
 
         void updatePetak(); //Menghapus makanan yang sudah dimakan dan ikan mati dari listnya
     private:
@@ -37,6 +37,8 @@ class petak {
         List<koin> listKoin;
         List<makanan> listMakanan;
         List<siput> listSiput;
+        void updateMakanan();
+        void updateIkan();
 };
 
 #endif

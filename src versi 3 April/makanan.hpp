@@ -7,6 +7,7 @@
 
 class makanan : public bendaMati{
 public:
+    makanan();
     makanan(double);
     bool isEdible();
     void setEdible(bool);

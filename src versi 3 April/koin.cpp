@@ -6,6 +6,8 @@ using namespace std;
 
 //ctor
 
+koin::koin(){}
+
 koin::koin(double x, double y) : bendaMati(x,y){
 	nilai = 0;
 }

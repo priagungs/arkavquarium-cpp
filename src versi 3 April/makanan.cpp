@@ -2,6 +2,8 @@
 #include <iostream>
 using namespace std;
 
+makanan::makanan(){}
+
 makanan::makanan(double X) : bendaMati(X,0.0) {
 	edible = true;
 }

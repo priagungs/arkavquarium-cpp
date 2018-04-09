@@ -12,6 +12,7 @@ class koin : public bendaMati{
 
 	public:
 	    //ctor
+		koin();
 		koin(double, double);
 		koin(double, double, int);
 		//setter getter

@@ -1,5 +1,10 @@
 #include "List.hpp"
 #include "akuarium.hpp"
+#include "piranha.hpp"
+#include "guppy.hpp"
+#include "makanan.hpp"
+#include "koin.hpp"
+#include "siput.hpp"
 
 #ifndef CONTROLLER_H
 #define CONTROLER_H
@@ -7,7 +12,7 @@
 class controller{
 public:
     //Mengiterasi semua entitas dari semua petak untuk melakukan aksinya move/eat
-    controller();
+    controller(akuarium&);
     void processAkuarium();
 
     void processGuppy();
@@ -15,12 +20,12 @@ public:
     void processMakanan();
     void processSiput();
 
-    void addKoin(int,int);
-    void addGuppy(int,int);
-    void addPiranha(int,int);
-    void addMakanan(int,int);
-
-    akuarium tank;
+    void addKoin(double,double,double);
+    void addGuppy(double,double);
+    void addPiranha(double,double);
+    void addMakanan(double);
+private:
+    akuarium a;
 };
 
 #endif
