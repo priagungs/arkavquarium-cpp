@@ -7,7 +7,7 @@
 #include "siput.hpp"
 
 #ifndef CONTROLLER_H
-#define CONTROLER_H
+#define CONTROLLER_H
 
 class controller{
 public:
@@ -25,7 +25,7 @@ public:
     void addPiranha();
     void addMakanan(double);
 
-    void setTime(double time);
+    void setTime(double);
 private:
     akuarium a;
     double timestamp;
