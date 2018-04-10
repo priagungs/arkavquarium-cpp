@@ -35,6 +35,7 @@ void controller::processAkuarium(){
     processGuppy();
     processMakanan();
     processSiput();
+    processKoin();
 }
 
 void controller::processGuppy(){
@@ -42,6 +43,7 @@ void controller::processGuppy(){
         elmt<guppy>* temp = a.getListGuppy().first;
         do{
             guppy &g = temp->info;
+            temp = temp->next;
             //mencari makan untuk yang sudah lapar
             if(g.getHungerState() && a.makananAvailable()){
                 makanan m = a.searchMakanan(g.getX(), g.getY());
@@ -71,8 +73,6 @@ void controller::processGuppy(){
                     case 3: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP3);
                 }
             }
-            temp = temp->next;
-
         } while(temp != NULL);
     }
 }
@@ -82,6 +82,16 @@ void controller::processMakanan() {
       elmt<makanan>* temp = a.getListMakanan().first;
       do {
         temp->info.move(TIMESTAMP_MAKANAN);
+        temp = temp->next;
+      } while (temp != NULL);
+    }
+}
+
+void controller::processKoin(){
+    if (!a.getListKoin().isEmpty()) {
+      elmt<koin>* temp = a.getListKoin().first;
+      do {
+        temp->info.move(TIMESTAMP_KOIN);
         temp = temp->next;
       } while (temp != NULL);
     }

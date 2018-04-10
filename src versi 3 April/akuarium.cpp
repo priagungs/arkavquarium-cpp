@@ -90,7 +90,11 @@ guppy akuarium::searchGuppy(double x, double y) {
 
  //Mengembalikan petak terdekat dari x y yang terdapat Koin
 koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat dari x y yang terdapat Koin
+<<<<<<< HEAD
 	//if(koinAvailable()){
+=======
+	// if(koinAvailable()){
+>>>>>>> da1a7cdb4070f0ed3ce12fb96c0af794d0121cb7
 		elmt<koin>* temp = listKoin.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 		koin k = temp->info;
@@ -102,7 +106,11 @@ koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat da
 			}
 		} while(temp->next != NULL);
 		return k;
+<<<<<<< HEAD
 	//}
+=======
+	// }
+>>>>>>> da1a7cdb4070f0ed3ce12fb96c0af794d0121cb7
 }
 
 //update status akuarium
@@ -110,6 +118,7 @@ void akuarium::updateAkuarium(){
 	updateMakanan();
 	updatePiranha();
 	updateGuppy();
+	updateKoin();
 }
 
 void akuarium::updateMakanan(){
@@ -117,13 +126,13 @@ void akuarium::updateMakanan(){
         elmt<makanan>* temp = listMakanan.first;
         do{
             makanan &m = temp->info;
-			if(m.getY() >= SCREEN_HEIGHT){
+			temp = temp->next;
+			if(m.getY() >= SCREEN_HEIGHT && !listMakanan.isEmpty()){
 				listMakanan.remove(m);
 			}
-            if(!m.isEdible()){
-                listMakanan.remove(m);
-            }
-			temp = temp->next;
+            // if(!m.isEdible()){
+            //     listMakanan.remove(m);
+            // }
         } while(temp != NULL);
     }
 }
@@ -134,7 +143,12 @@ void akuarium::updateGuppy(){
         do{
             //update status guppy
             guppy &g = temp->info;
+<<<<<<< HEAD
 						cout << g.getHungerState();
+=======
+			temp = temp->next;
+			cout << g.getHungerState();
+>>>>>>> da1a7cdb4070f0ed3ce12fb96c0af794d0121cb7
             g.setHungerState();
             g.decCounter();
             if(g.getfoodCounter() == GUPPY_FOOD_COUNTER_NAIK_TAHAP){ //bisa diatur
@@ -151,8 +165,6 @@ void akuarium::updateGuppy(){
             if(g.isMati()){
                 listGuppy.remove(g);
             }
-
-			temp = temp->next;
         } while(temp != NULL);
     }
 }
@@ -162,6 +174,7 @@ void akuarium::updatePiranha(){
         elmt<piranha>* temp = listPiranha.first;
         do{
             piranha &p = temp->info;
+			temp = temp->next;
             p.setHungerState();
             p.decCounter();
             if(p.getfoodCounter() == PIRANHA_FOOD_COUNTER_NAIK_TAHAP){ //bisa diatur
@@ -176,7 +189,19 @@ void akuarium::updatePiranha(){
             if(p.isMati()){
                 listPiranha.remove(p);
             }
-			temp = temp->next;
         } while(temp != NULL);
+    }
+}
+
+void akuarium::updateKoin(){
+	 if (!listKoin.isEmpty()) {
+      elmt<koin>* temp = listKoin.first;
+      do {
+		koin &k = temp->info;
+		temp = temp->next;
+        if(k.getY() >= SCREEN_HEIGHT && !listKoin.isEmpty()){
+			listKoin.remove(k);	
+		}
+      } while (temp != NULL);
     }
 }

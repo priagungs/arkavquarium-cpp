@@ -50,27 +50,24 @@ public:
 
     //Menghapus elemen T pada list
     void remove(T element){
-		if (first->info == element) {	//elemen ada di elemen pertama
-			elmt<T>* del = first;
-			if (first-> next != NULL) {	//list memiliki lebih dari satu elemen
-				//elmt<T>* temp = first->next;
-				first->info = first->next->info;
-				first->next = first->next->next;
-			} else {					//list memiliki satu elemen
-				first = NULL;
-				last = NULL;
-			}
-			delete del;
-		} else {						//elemen tidak di elemen pertama
-			elmt<T>* current = first;
-			while (current->next->info != element && current->next != NULL) {
-				//Iterasi sampai elemen terakhir atau sampai elemen ditemukan
-				current = current->next;
-			}
-			if (current->next != NULL) { //Jika elemen ditemukan, dihapus dari list
-				elmt<T>* del = current;
-				current->next = current->next->next;
+		if(!isEmpty()){
+			if (first->info == element) {	//elemen ada di elemen pertama
+				elmt<T>* del = first;
+				first = first->next;
 				delete del;
+			} else {						//elemen tidak di elemen pertama
+				elmt<T>* current = first;
+				elmt<T>* prev = NULL;
+				while (current->info != element && current != NULL) {
+					//Iterasi sampai elemen terakhir atau sampai elemen ditemukan
+					prev = current;
+					current = current->next;
+				}
+				if (current != NULL) { //Jika elemen ditemukan, dihapus dari list
+					elmt<T>* del = current;
+					prev->next = current->next;
+					delete del;
+				}
 			}
 		}
     }
