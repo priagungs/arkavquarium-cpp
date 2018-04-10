@@ -76,7 +76,7 @@ guppy akuarium::searchGuppy(double x, double y) {
 	// if(guppyAvailable()){
 		elmt<guppy>* temp = listGuppy.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
-		guppy g = temp->info;
+		guppy &g = temp->info;
 		while(temp->next != NULL){
 			temp = temp->next;
 			if(jarak > sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2))){
@@ -163,8 +163,9 @@ void akuarium::updatePiranha(){
     if(!listPiranha.isEmpty()){
         elmt<piranha>* temp = listPiranha.first;
         do{
-            piranha &p = temp->info;
-						temp = temp->next;
+            elmt<piranha>* temp2 = temp;
+            piranha &p = temp2->info;
+			temp = temp->next;
             p.setHungerState();
             p.decCounter();
             if(p.getfoodCounter() == PIRANHA_FOOD_COUNTER_NAIK_TAHAP){ //bisa diatur

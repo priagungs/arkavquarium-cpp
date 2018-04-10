@@ -14,6 +14,8 @@
 
 class controller{
 public:
+	int uang;
+	int levelTelur;
     //Mengiterasi semua entitas dari semua petak untuk melakukan aksinya move/eat
     controller(akuarium);
     void processAkuarium();
