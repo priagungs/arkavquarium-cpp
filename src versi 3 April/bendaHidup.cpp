@@ -9,13 +9,13 @@ using namespace std;
 bendaHidup::bendaHidup() {
 	x = rand()%SCREEN_WIDTH;
 	y = rand()%SCREEN_HEIGHT;
-	direction = rand() % 7;
+	direction = rand()*M_PI*2/double(RAND_MAX);
 }
 
 bendaHidup::bendaHidup(double X, double Y) {
 	x = X;
 	y = Y;
-	direction = rand() % 7;
+	direction = rand()*M_PI*2/double(RAND_MAX);
 }
 
 
@@ -23,15 +23,6 @@ bendaHidup::bendaHidup(double X, double Y) {
 double bendaHidup::getX() {return x;}
 double bendaHidup::getY() {return y;}
 double bendaHidup::getDirection() {return direction;}
-
-void bendaHidup::modDirection() {
-	while (direction>=360) {
-		direction -= 360;
-	}
-	while (direction<0) {
-		direction +=360;
-	}
-}
 
 void bendaHidup::setX(double X) {x = X;}
 void bendaHidup::setY(double Y) {y = Y;}

@@ -66,8 +66,7 @@ void controller::processGuppy(){
 
             //jika nabrak tembok
             if(g.getX() <= 0 || g.getY() <= 0 || g.getX() >= SCREEN_WIDTH || g.getY() >= SCREEN_HEIGHT){
-                g.setDirection(rand()%360);
-                g.modDirection();
+                g.setDirection(g.getDirection()+M_PI);
             }
 
             // mengeluarkan koin bagi yang siap mengeluarkan koin

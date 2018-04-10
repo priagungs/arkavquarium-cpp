@@ -15,7 +15,7 @@ piranha::piranha(double X, double Y) : ikan(), bendaHidup(X, Y) {};
 void piranha::move(double time){ // gerak arah random selama time
     if(moveCounter == 1){
         decCounter();
-        direction = rand() % 7;
+        direction = rand()*2*M_PI/double(RAND_MAX);
     }
     this->x += speed*cos(direction)*time;
     this->y += speed*sin(direction)*time;

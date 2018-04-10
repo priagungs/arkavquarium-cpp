@@ -22,8 +22,6 @@ class bendaHidup : public entitas {
 		void setY(double Y);
     void setDirection(double d);
 
-    void modDirection();
-
     //Prosedur untuk bergerak secara acak
     virtual void move(double time) = 0;
 
