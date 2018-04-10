@@ -69,15 +69,9 @@ void controller::processGuppy(){
             // mengeluarkan koin bagi yang siap mengeluarkan koin
             if(g.getHunger()%PERIODE_KOIN == 0){
                 switch(g.getTahap()){
-<<<<<<< HEAD
                     case 1: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP1); break;
                     case 2: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP2); break;
                     case 3: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP3); break;
-=======
-                    case 1: addKoin(g.getX(), g.getY(), NILAI_KOIN_TAHAP1);
-                    case 2: addKoin(g.getX(), g.getY(), NILAI_KOIN_TAHAP2);
-                    case 3: addKoin(g.getX(), g.getY(), NILAI_KOIN_TAHAP3);
->>>>>>> 0345b44b796132733e70eac546a542c2cb754967
                 }
             }
         } while(temp != NULL);

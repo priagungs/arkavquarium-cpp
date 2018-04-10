@@ -92,17 +92,11 @@ int main( int argc, char* args[] )
         cout << "aoskdoadk";
         // Gambar ikan di posisi yang tepat.
         clear_screen();
-<<<<<<< HEAD
-        draw_text("Panah untuk bergerak, r untuk reset, x untuk keluar", 18, 10, 10, 0, 0, 0);
-        draw_text(fps_text, 18, 10, 30, 0, 0, 0);
-        draw_image("pointer.png", cx, cy);
-=======
         draw_image("pointer.png", cx, cy);
 		//draw_image("background.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
         //draw_text("Panah untuk bergerak, r untuk reset, x untuk keluar", 18, 10, 10, 0, 0, 0);
         //draw_text(fps_text, 18, 10, 30, 0, 0, 0);
         //draw_image("ikan.png", cx, cy);
->>>>>>> 0345b44b796132733e70eac546a542c2cb754967
         drawAquarium(control.getAkuarium());
         update_screen();
     }
