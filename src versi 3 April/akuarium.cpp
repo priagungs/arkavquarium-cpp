@@ -164,7 +164,7 @@ void akuarium::updatePiranha(){
                     p.setFoodCounter(p.getfoodCounter()+1);
                 }
             }
-            if(p.getHunger() == 0){
+            if(p.getHunger() <= 0){
                 p.setMati(true);
             }
 
