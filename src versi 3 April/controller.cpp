@@ -67,10 +67,14 @@ void controller::processGuppy(){
 
             // mengeluarkan koin bagi yang siap mengeluarkan koin
             if(g.getHunger()%PERIODE_KOIN == 0){
-                switch(g.getTahap()){
-                    case 1: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP1);
-                    case 2: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP2);
-                    case 3: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP3);
+                if(g.getTahap() == 1){
+                    addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP1);
+                }
+                else if(g.getTahap() == 2){
+                    addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP2);
+                }
+                else{
+                    addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP3);
                 }
             }
         } while(temp != NULL);
@@ -107,10 +111,14 @@ void controller::processPiranha() {
 }
 void controller::processSiput(){
     if(!a.getListKoin().isEmpty()){
+        cout << a.getListKoin().isEmpty() << endl;
         koin k = a.searchKoin(a.getSiput().getX(), a.getSiput().getY());
+        cout << a.getListKoin().isEmpty() << endl;
         if(abs(k.getX()-a.getSiput().getX()) < 10){
             if(abs(k.getY()-a.getSiput().getY()) < 10 && k.getY() < SCREEN_HEIGHT){
+                cout << a.getListKoin().isEmpty() << endl;
                 a.getListKoin().remove(k);
+                cout << a.getListKoin().isEmpty() << endl;
             }
             else{
                 a.getSiput().move(0);

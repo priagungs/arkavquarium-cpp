@@ -202,7 +202,7 @@ void drawAquarium(akuarium tank) {
 		} else if (temp->info.getNilai() == NILAI_KOIN_TAHAP2) {
 			draw_image("koin2.png", temp->info.getX(), temp->info.getY());
 		} else if (temp->info.getNilai()  == NILAI_KOIN_TAHAP3) {
-			draw_image("diamond.png", temp->info.getX(), temp->info.getY());
+			draw_image("Diamond.png", temp->info.getX(), temp->info.getY());
 		}
         temp = temp->next;
       } while (temp != NULL);
