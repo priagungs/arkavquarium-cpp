@@ -6,6 +6,7 @@
 #include "koin.hpp"
 #include <iostream>
 #include <math.h>
+#include "oop.hpp"
 using namespace std;
 
 piranha::piranha() : ikan(), bendaHidup() {};
