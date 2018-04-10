@@ -91,7 +91,12 @@ void controller::processKoin(){
     if (!a.getListKoin().isEmpty()) {
       elmt<koin>* temp = a.getListKoin().first;
       do {
-        temp->info.move(TIMESTAMP_KOIN);
+        if(temp->info.getY() >= SCREEN_HEIGHT-50){
+            temp->info.move(0);	
+        }
+        else {
+            temp->info.move(TIMESTAMP_KOIN);
+        }
         temp = temp->next;
       } while (temp != NULL);
     }
@@ -101,5 +106,21 @@ void controller::processPiranha() {
 
 }
 void controller::processSiput(){
-
+    if(!a.getListKoin().isEmpty()){
+        koin k = a.searchKoin(a.getSiput().getX(), a.getSiput().getY());
+        if(abs(k.getX()-a.getSiput().getX()) < 10){
+            if(abs(k.getY()-a.getSiput().getY()) < 10 && k.getY() < SCREEN_HEIGHT){
+                a.getListKoin().remove(k);
+            }
+            else{
+                a.getSiput().move(0);
+            }
+        }
+        else{
+            a.getSiput().moveTowardsTarget(k.getX(), k.getY(), TIMESTAMP_SIPUT);
+        }
+    }
+    else{
+        a.getSiput().move(0);
+    }
 }

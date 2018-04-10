@@ -35,15 +35,15 @@ class akuarium {
 		void generatePiranha(piranha); //Membuat piranha baru dan menambahkan ke listPiranha
 		void generateMakanan(makanan); //membuat makanan baru dan menambakan ke listMakanan
 
-		makanan searchMakanan(double x, double y); //Mengembalikan makanan terdekat dari x y yang terdapat makanan
-		guppy searchGuppy(double x, double y);  //Mengembalikan guppy terdekat dari x y yang terdapat Guppy
-		koin searchKoin(double x, double y); //Mengembalikan koin terdekat dari x y yang terdapat Koin
+		makanan& searchMakanan(double x, double y); //Mengembalikan makanan terdekat dari x y yang terdapat makanan
+		guppy& searchGuppy(double x, double y);  //Mengembalikan guppy terdekat dari x y yang terdapat Guppy
+		koin& searchKoin(double x, double y); //Mengembalikan koin terdekat dari x y yang terdapat Koin
 	
 		void updateAkuarium();
 		void updateMakanan();
 		void updatePiranha();
 		void updateGuppy();
-		void updateKoin();
+		// void updateKoin();
 
 	private:
 		int ukuranX; //Menyimpan ukuran panjang akuarium
