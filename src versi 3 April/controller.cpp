@@ -1,10 +1,8 @@
 #include "controller.hpp"
-#define NILAI_KOIN_DEFAULT 100
-#define PERIODE_KOIN 5
+#include "konstanta.hpp"
 
 controller::controller(akuarium a){
     this->a = a;
-    this->timestamp = 0.01;
 }
 
 akuarium controller::getAkuarium() {
@@ -14,10 +12,6 @@ akuarium controller::getAkuarium() {
 void controller::addKoin(double x, double y, double nilai){
     koin k(x,y,nilai);
     a.getListKoin().add(k);
-}
-
-void controller::setTime(double timestamp){
-    this->timestamp = timestamp;
 }
 
 void controller::addGuppy(double X, double Y){
@@ -54,14 +48,14 @@ void controller::processGuppy(){
                 if(abs(m.getX()-g.getX()) < 0.1 && abs(m.getY()-g.getY()) < 0.1){
                     a.getListMakanan().remove(m);
                     g.setFoodCounter(g.getfoodCounter()+1);
-                    g.setHunger(1000);
+                    g.setHunger(GUPPY_HUNGER);
                 }
                 else{
-                    g.moveTowardsTarget(m.getX(), m.getY(),timestamp);
+                    g.moveTowardsTarget(m.getX(), m.getY(),TIMESTAMP_IKAN);
                 }
             }else{
             //bergerak random jika tidak lapar
-                g.move(timestamp);
+                g.move(TIMESTAMP_IKAN);
             }
 
             //jika nabrak tembok
@@ -71,7 +65,11 @@ void controller::processGuppy(){
 
             // mengeluarkan koin bagi yang siap mengeluarkan koin
             if(g.getHunger()%PERIODE_KOIN == 0){
-                addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_DEFAULT);
+                switch(g.getTahap()){
+                    case 1: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP1);
+                    case 2: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP2);
+                    case 3: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP3);
+                }
             }
             temp = temp->next;
 
@@ -83,7 +81,7 @@ void controller::processMakanan() {
     if (!a.getListMakanan().isEmpty()) {
       elmt<makanan>* temp = a.getListMakanan().first;
       do {
-        temp->info.move(0.01);
+        temp->info.move(TIMESTAMP_MAKANAN);
         temp = temp->next;
       } while (temp != NULL);
     }

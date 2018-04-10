@@ -1,13 +1,14 @@
 #include "ikan.hpp"
+#include "konstanta.hpp"
 #include <stdlib.h>
 #include <iostream>
 using namespace std;
 
 ikan::ikan() {
-	hunger = 10000; //BERAPAAAA? EDIT LAGI INI
+	hunger = GUPPY_HUNGER; //BERAPAAAA? EDIT LAGI INI
 	tahap = 1;
 	foodCounter = 0;
-	moveCounter = rand() % 10000;
+	moveCounter = rand() % MAX_MOVE_COUNTER;
 	mati = false;
 	hungerState = false;
 }
@@ -24,7 +25,7 @@ void ikan::setMati(bool B) {mati = B;}
 void ikan::decCounter(){
 	moveCounter--;
 	if(moveCounter <= 0){
-		moveCounter = rand() % 10000;
+		moveCounter = rand() % MAX_MOVE_COUNTER;
 	}
 }
 bool ikan::getHungerState(){
@@ -32,7 +33,7 @@ bool ikan::getHungerState(){
 }
 void ikan::setHungerState(){
 	hunger--;
-	if(hunger < 1000){ //bisa disesuaikan angka nya
+	if(hunger < GUPPY_MIN_HUNGER_STATE){ //bisa disesuaikan angka nya
 		hungerState = true;
 	}
 	else{

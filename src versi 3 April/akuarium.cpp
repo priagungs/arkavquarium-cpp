@@ -2,6 +2,7 @@
 #include "oop.hpp"
 #include "petak.hpp"
 #include "List.hpp"
+#include "konstanta.hpp"
 #include <iostream>
 #include <math.h>
 using namespace std;
@@ -72,7 +73,7 @@ makanan akuarium::searchMakanan(double x, double y) {
 }
 //Mengembalikan petak terdekat dari x y yang terdapat Guppy
 guppy akuarium::searchGuppy(double x, double y) {
-	//if(guppyAvailable()){
+	// if(guppyAvailable()){
 		elmt<guppy>* temp = listGuppy.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 		guppy g = temp->info;
@@ -89,7 +90,7 @@ guppy akuarium::searchGuppy(double x, double y) {
 
  //Mengembalikan petak terdekat dari x y yang terdapat Koin
 koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat dari x y yang terdapat Koin
-	//if(koinAvailable()){
+	if(koinAvailable()){
 		elmt<koin>* temp = listKoin.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 		koin k = temp->info;
@@ -101,7 +102,7 @@ koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat da
 			}
 		} while(temp->next != NULL);
 		return k;
-	//}
+	}
 }
 
 //update status akuarium
@@ -116,6 +117,10 @@ void akuarium::updateMakanan(){
         elmt<makanan>* temp = listMakanan.first;
         do{
             makanan &m = temp->info;
+			if(m.getY() >= SCREEN_HEIGHT){
+				m.setEdible(false);
+				cout << "makanan udh jatoh";
+			}
             if(!m.isEdible()){
                 listMakanan.remove(m);
             }
@@ -130,9 +135,10 @@ void akuarium::updateGuppy(){
         do{
             //update status guppy
             guppy &g = temp->info;
+			cout << g.getHungerState();
             g.setHungerState();
             g.decCounter();
-            if(g.getfoodCounter() == 5){ //bisa diatur
+            if(g.getfoodCounter() == GUPPY_FOOD_COUNTER_NAIK_TAHAP){ //bisa diatur
                 if(g.getTahap() < 3){
                     g.setTahap(g.getTahap()+1);
 					g.setFoodCounter(0);
@@ -140,7 +146,6 @@ void akuarium::updateGuppy(){
             }
             if(g.getHunger() <= 0){
                 g.setMati(true);
-				cout << "masuk";
             }
 
             //update eksistensi guppy
@@ -160,7 +165,7 @@ void akuarium::updatePiranha(){
             piranha &p = temp->info;
             p.setHungerState();
             p.decCounter();
-            if(p.getfoodCounter() == 3){ //bisa diatur
+            if(p.getfoodCounter() == PIRANHA_FOOD_COUNTER_NAIK_TAHAP){ //bisa diatur
                 if(p.getTahap() < 3){
                     p.setFoodCounter(p.getfoodCounter()+1);
                 }
