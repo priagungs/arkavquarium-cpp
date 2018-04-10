@@ -7,6 +7,7 @@
 #include <iostream>
 #include <math.h>
 #include <ctime>
+#include "oop.hpp"
 using namespace std;
 
 //Ctor
