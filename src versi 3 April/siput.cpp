@@ -17,9 +17,9 @@ void siput::move(double time) {
 //Override moveTowardsTarget (Kecepatan berbeda dari bendaHidup lain)
 void siput::moveTowardsTarget(double x, double y, double t) {
 	if(x > this->x){
-		this->x += x*t*speed;
+		this->x += t*speed;
 	}
 	else if(x < this->x){
-		this->x -= x*t*speed;
+		this->x -= t*speed;
 	}
 }
