@@ -89,19 +89,12 @@ int main( int argc, char* args[] )
             frames_passed = 0;
         }
         control.processAkuarium();
-
+        cout << "aoskdoadk";
         // Gambar ikan di posisi yang tepat.
         clear_screen();
-<<<<<<< HEAD
         draw_text("Panah untuk bergerak, r untuk reset, x untuk keluar", 18, 10, 10, 0, 0, 0);
         draw_text(fps_text, 18, 10, 30, 0, 0, 0);
         draw_image("pointer.png", cx, cy);
-=======
-		//draw_image("background.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
-        //draw_text("Panah untuk bergerak, r untuk reset, x untuk keluar", 18, 10, 10, 0, 0, 0);
-        //draw_text(fps_text, 18, 10, 30, 0, 0, 0);
-        //draw_image("ikan.png", cx, cy);
->>>>>>> a9c290ffc57b0af2d95a320340bb354d1a54d0cc
         drawAquarium(control.getAkuarium());
         update_screen();
     }
@@ -112,11 +105,11 @@ int main( int argc, char* args[] )
 }
 
 void drawAquarium(akuarium tank) {
-    
+
 	if ((tank.getSiput().getDirection()>=0 &&  tank.getSiput().getDirection()<0.5*M_PI) ||
 		(tank.getSiput().getDirection()>=1.5*M_PI &&  tank.getSiput().getDirection()<2*M_PI)) {
 
-		draw_image("siputkanan.png", tank.getSiput().getX(), tank.getSiput().getY());			
+		draw_image("siputkanan.png", tank.getSiput().getX(), tank.getSiput().getY());
 	} else {
 		draw_image("siputkanan.png", tank.getSiput().getX(), tank.getSiput().getY());
 	}
@@ -124,53 +117,53 @@ void drawAquarium(akuarium tank) {
     if (!tank.getListGuppy().isEmpty()) {
         elmt<guppy>* currentGuppy = tank.getListGuppy().first;
         while (currentGuppy != NULL) {
-            if ((currentGuppy->info.getDirection()>=0 &&  currentGuppy->info.getDirection()<0.5*M_PI) ||
+          if ((currentGuppy->info.getDirection()>=0 &&  currentGuppy->info.getDirection()<0.5*M_PI) ||
                 (currentGuppy->info.getDirection()>=1.5*M_PI &&  currentGuppy->info.getDirection()<2*M_PI)) { //Hadap kanan
-				if (currentGuppy->info.getTahap()==1) {
-					if (currentGuppy->info.getHungerState()) { //guppy lapar
-						draw_image("guppy1laparkanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					} else {
-						draw_image("guppy1kanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					}
-				} else if (currentGuppy->info.getTahap() == 2) {
-					if (currentGuppy->info.getHungerState()) { //guppy lapar
-						draw_image("guppy2laparkanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					} else {
-						draw_image("guppy2kanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					}
-				} else if (currentGuppy->info.getTahap() == 3) {
-					if (currentGuppy->info.getHungerState()) { //guppy lapar
-						draw_image("guppy3laparkanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					} else {
-						draw_image("guppy3kanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					}
-				}
-			} else { //Hadap kiri
-				if (currentGuppy->info.getTahap()==1) {
-					if (currentGuppy->info.getHungerState()) { //guppy lapar
-						draw_image("guppy1laparkiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					} else {
-						draw_image("guppy1kiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					}
-				} else if (currentGuppy->info.getTahap() == 2) {
-					if (currentGuppy->info.getHungerState()) { //guppy lapar
-						draw_image("guppy2laparkiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					} else {
-						draw_image("guppy2kiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					}
-				} else if (currentGuppy->info.getTahap() == 3) {
-					if (currentGuppy->info.getHungerState()) { //guppy lapar
-						draw_image("guppy3laparkiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					} else {
-						draw_image("guppy3kiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-					}
-				}
-			}
+      				if (currentGuppy->info.getTahap()==1) {
+      					if (currentGuppy->info.getHungerState()) { //guppy lapar
+      						draw_image("guppy1laparkanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+      					} else {
+      						draw_image("guppy1kanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+      					}
+      				} else if (currentGuppy->info.getTahap() == 2) {
+      					if (currentGuppy->info.getHungerState()) { //guppy lapar
+      						draw_image("guppy2laparkanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+      					} else {
+      						draw_image("guppy2kanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+      					}
+      				} else if (currentGuppy->info.getTahap() == 3) {
+      					if (currentGuppy->info.getHungerState()) { //guppy lapar
+      						draw_image("guppy3laparkanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+      					} else {
+      						draw_image("guppy3kanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+      					}
+      				}
+			    } else { //Hadap kiri
+    				if (currentGuppy->info.getTahap()==1) {
+    					if (currentGuppy->info.getHungerState()) { //guppy lapar
+    						draw_image("guppy1laparkiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+    					} else {
+    						draw_image("guppy1kiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+    					}
+    				} else if (currentGuppy->info.getTahap() == 2) {
+    					if (currentGuppy->info.getHungerState()) { //guppy lapar
+    						draw_image("guppy2laparkiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+    					} else {
+    						draw_image("guppy2kiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+    					}
+    				} else if (currentGuppy->info.getTahap() == 3) {
+    					if (currentGuppy->info.getHungerState()) { //guppy lapar
+    						draw_image("guppy3laparkiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+    					} else {
+    						draw_image("guppy3kiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+    					}
+    				}
+			   }
 
             currentGuppy = currentGuppy->next;
         }
     }
-	
+
 	if (!tank.getListPiranha().isEmpty()) {
         elmt<piranha>* currentPiranha = tank.getListPiranha().first;
         while (currentPiranha != NULL) {
@@ -214,4 +207,3 @@ void drawAquarium(akuarium tank) {
       } while (temp != NULL);
     }
 }
-
