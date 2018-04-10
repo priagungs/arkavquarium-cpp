@@ -10,6 +10,7 @@ akuarium controller::getAkuarium() {
 }
 
 void controller::addKoin(double x, double y, double nilai){
+    cout << nilai;
     koin k(x,y,nilai);
     a.getListKoin().add(k);
 }
@@ -96,7 +97,7 @@ void controller::processKoin(){
       elmt<koin>* temp = a.getListKoin().first;
       do {
         if(temp->info.getY() >= SCREEN_HEIGHT-50){
-            temp->info.move(0);	
+            temp->info.move(0);
         }
         else {
             temp->info.move(TIMESTAMP_KOIN);
@@ -141,8 +142,7 @@ void controller::processPiranha() {
     }
 }
 void controller::processSiput(){
-    if(!a.getListKoin().isEmpty()){
-        cout << a.getListKoin().isEmpty() << endl;
+    if(a.koinAvailable()){
         koin k = a.searchKoin(a.getSiput().getX(), a.getSiput().getY());
         cout << a.getListKoin().isEmpty() << endl;
         if(abs(k.getX()-a.getSiput().getX()) < 10){

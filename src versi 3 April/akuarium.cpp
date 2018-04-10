@@ -77,13 +77,13 @@ guppy akuarium::searchGuppy(double x, double y) {
 		elmt<guppy>* temp = listGuppy.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 		guppy g = temp->info;
-		do{
+		while(temp->next != NULL){
 			temp = temp->next;
 			if(jarak > sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2))){
 				jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 				g = temp->info;
 			}
-		} while(temp->next != NULL);
+		}
 		return g;
 	//}
 }
@@ -94,13 +94,13 @@ koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat da
 		elmt<koin>* temp = listKoin.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 		koin k = temp->info;
-		do{
+		while(temp->next != NULL) {
 			temp = temp->next;
 			if(jarak > sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2))){
 				jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 				k = temp->info;
 			}
-		} while(temp->next != NULL);
+		}
 		return k;
 	// }
 }
