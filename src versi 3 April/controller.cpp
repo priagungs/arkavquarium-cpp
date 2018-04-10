@@ -12,7 +12,6 @@ akuarium controller::getAkuarium() {
 }
 
 void controller::addKoin(double x, double y, double nilai){
-    cout << nilai;
     koin k(x,y,nilai);
     a.getListKoin().add(k);
 }
@@ -121,7 +120,7 @@ void controller::processPiranha() {
                     a.getListGuppy().remove(g);
                     p.setFoodCounter(p.getfoodCounter()+1);
                     p.setHunger(PIRANHA_HUNGER);
-					addKoin(p.getX(), p.getY(), NILAI_KOIN_TAHAP3);
+	                  addKoin(p.getX(), p.getY(), NILAI_KOIN_TAHAP3);
                 }
                 else{
                     p.moveTowardsTarget(g.getX(), g.getY(),TIMESTAMP_IKAN);
@@ -141,11 +140,10 @@ void controller::processPiranha() {
 void controller::processSiput(){
     if(a.koinAvailable()){
         koin k = a.searchKoin(a.getSiput().getX(), a.getSiput().getY());
-        cout << a.getListKoin().isEmpty() << endl;
         if(abs(k.getX()-a.getSiput().getX()) < 10){
             if(abs(k.getY()-a.getSiput().getY()) < 10 && k.getY() < SCREEN_HEIGHT){
                 uang += k.getNilai();
-				a.getListKoin().remove(k);
+				        a.getListKoin().remove(k);
             }
             else{
                 a.getSiput().move(0);

@@ -144,8 +144,8 @@ void akuarium::updateGuppy(){
             if(g.getfoodCounter() == GUPPY_FOOD_COUNTER_NAIK_TAHAP){ //bisa diatur
                 if(g.getTahap() < 3){
                     g.setTahap(g.getTahap()+1);
-					g.setFoodCounter(0);
-				}
+										g.setFoodCounter(0);
+								}
             }
             if(g.getHunger() <= 0){
                 g.setMati(true);

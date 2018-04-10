@@ -70,39 +70,39 @@ int main( int argc, char* args[] )
             switch (key) {
             // r untuk reset
             case SDLK_p:
-				if (control.uang >= HARGA_PIRANHA) {
-					control.addPiranha();					
-				}
+      				if (control.uang >= HARGA_PIRANHA) {
+      					control.addPiranha();
+      				}
                 break;
             case SDLK_m:
-				if (control.uang >= HARGA_MAKANAN) {
-					control.addMakanan(cx);					
-				}
+      				if (control.uang >= HARGA_MAKANAN) {
+      					control.addMakanan(cx);
+      				}
                 break;
-			case SDLK_n:
-				if (control.uang >= HARGA_GUPPY) {
-					control.addGuppy(cx,cy);					
-				}
+      			case SDLK_n:
+      				if (control.uang >= HARGA_GUPPY) {
+      					control.addGuppy(cx,cy);
+      				}
                 break;
             case SDLK_t:
-				if (control.levelTelur == 0) {
-					if (control.uang >= HARGA_TELUR1) {
-						control.levelTelur++;
-						control.uang -= HARGA_TELUR1;
-					}
-				} else if (control.levelTelur == 1) {
-					if (control.uang >= HARGA_TELUR2) {
-						control.levelTelur++;
-						control.uang -= HARGA_TELUR2;
-					}
-				} else if (control.levelTelur == 2) {
-					if (control.uang >= HARGA_TELUR3) {
-						control.levelTelur++;
-						control.uang -= HARGA_TELUR3;
-					}
-				}
-                break;
-			}
+      				if (control.levelTelur == 0) {
+      					if (control.uang >= HARGA_TELUR1) {
+      						control.levelTelur++;
+      						control.uang -= HARGA_TELUR1;
+      					}
+      				} else if (control.levelTelur == 1) {
+      					if (control.uang >= HARGA_TELUR2) {
+      						control.levelTelur++;
+      						control.uang -= HARGA_TELUR2;
+      					}
+      				} else if (control.levelTelur == 2) {
+        					if (control.uang >= HARGA_TELUR3) {
+        						control.levelTelur++;
+        						control.uang -= HARGA_TELUR3;
+        					}
+      				}
+              break;
+			     }
         }
 
         // Update FPS setiap detik
@@ -118,7 +118,7 @@ int main( int argc, char* args[] )
         control.processAkuarium();
         // Gambar ikan di posisi yang tepat.
         clear_screen();
-        draw_image("background.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+        //draw_image("background.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
         draw_image("pointer.png", cx, cy);
         //draw_text("Panah untuk bergerak, r untuk reset, x untuk keluar", 18, 10, 10, 0, 0, 0);
         //draw_text(fps_text, 18, 10, 30, 0, 0, 0);
@@ -126,7 +126,7 @@ int main( int argc, char* args[] )
         drawAquarium(control.getAkuarium());
         update_screen();
     }
-	
+
 	cout << control.uang << endl;
 
     close();
@@ -141,7 +141,7 @@ void drawAquarium(akuarium tank) {
 
 		draw_image("siputkanan.png", tank.getSiput().getX(), tank.getSiput().getY());
 	} else {
-		draw_image("siputkanan.png", tank.getSiput().getX(), tank.getSiput().getY());
+		draw_image("siputkiri.png", tank.getSiput().getX(), tank.getSiput().getY());
 	}
 
     if (!tank.getListGuppy().isEmpty()) {
