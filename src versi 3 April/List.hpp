@@ -54,6 +54,9 @@ public:
 			if (first->info == element) {	//elemen ada di elemen pertama
 				elmt<T>* del = first;
 				first = first->next;
+				if(first == NULL){
+					last = NULL;
+				}
 				delete del;
 			} else {						//elemen tidak di elemen pertama
 				elmt<T>* current = first;
