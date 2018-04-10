@@ -118,8 +118,7 @@ void akuarium::updateMakanan(){
         do{
             makanan &m = temp->info;
 			if(m.getY() >= SCREEN_HEIGHT){
-				m.setEdible(false);
-				cout << "makanan udh jatoh";
+				listMakanan.remove(m);
 			}
             if(!m.isEdible()){
                 listMakanan.remove(m);
