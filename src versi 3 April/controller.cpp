@@ -13,7 +13,6 @@ void controller::addKoin(double x, double y, double nilai){
     cout << nilai;
     koin k(x,y,nilai);
     a.getListKoin().add(k);
-    cout << "kokok";
 }
 
 void controller::addGuppy(double X, double Y){
@@ -35,19 +34,14 @@ void controller::processAkuarium(){
     a.updateAkuarium();
     processPiranha();
     processGuppy();
-    cout << "BISMILLAH";
     processMakanan();
-    cout <<"MAKANANBERES BRE";
     processSiput();
-    cout << "SIPUT TOLOL";
     processKoin();
-    cout << "KOIN KOMUNIS";
 }
 
 void controller::processGuppy(){
     if(!a.getListGuppy().isEmpty()){
         elmt<guppy>* temp = a.getListGuppy().first;
-        cout << "KUNTUL";
         do{
             guppy &g = temp->info;
             temp = temp->next;
@@ -79,9 +73,7 @@ void controller::processGuppy(){
                     case 2: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP2); break;
                     case 3: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP3); break;
                 }
-                cout << "KELUAR";
             }
-            cout << "ASTAGA" ;
         } while(temp != NULL);
     }
 }
@@ -116,9 +108,7 @@ void controller::processPiranha() {
 }
 void controller::processSiput(){
     if(a.koinAvailable()){
-        cout << "SD";
         koin k = a.searchKoin(a.getSiput().getX(), a.getSiput().getY());
-        cout<< "HEHE";
         if(abs(k.getX()-a.getSiput().getX()) < 10){
             if(abs(k.getY()-a.getSiput().getY()) < 10 && k.getY() < SCREEN_HEIGHT){
                 a.getListKoin().remove(k);
