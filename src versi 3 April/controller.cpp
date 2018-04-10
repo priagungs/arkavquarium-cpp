@@ -43,6 +43,7 @@ void controller::processGuppy(){
         elmt<guppy>* temp = a.getListGuppy().first;
         do{
             guppy &g = temp->info;
+            temp = temp->next;
             //mencari makan untuk yang sudah lapar
             if(g.getHungerState() && a.makananAvailable()){
                 makanan m = a.searchMakanan(g.getX(), g.getY());
@@ -72,8 +73,6 @@ void controller::processGuppy(){
                     case 3: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP3);
                 }
             }
-            temp = temp->next;
-
         } while(temp != NULL);
     }
 }

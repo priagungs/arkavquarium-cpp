@@ -110,6 +110,7 @@ void akuarium::updateAkuarium(){
 	updateMakanan();
 	updatePiranha();
 	updateGuppy();
+	updateKoin();
 }
 
 void akuarium::updateMakanan(){
@@ -117,13 +118,13 @@ void akuarium::updateMakanan(){
         elmt<makanan>* temp = listMakanan.first;
         do{
             makanan &m = temp->info;
+			temp = temp->next;
 			if(m.getY() >= SCREEN_HEIGHT && !listMakanan.isEmpty()){
 				listMakanan.remove(m);
 			}
             // if(!m.isEdible()){
             //     listMakanan.remove(m);
             // }
-			temp = temp->next;
         } while(temp != NULL);
     }
 }
@@ -134,6 +135,7 @@ void akuarium::updateGuppy(){
         do{
             //update status guppy
             guppy &g = temp->info;
+			temp = temp->next;
 			cout << g.getHungerState();
             g.setHungerState();
             g.decCounter();
@@ -151,8 +153,6 @@ void akuarium::updateGuppy(){
             if(g.isMati()){
                 listGuppy.remove(g);
             }
-
-			temp = temp->next;
         } while(temp != NULL);
     }
 }
@@ -162,6 +162,7 @@ void akuarium::updatePiranha(){
         elmt<piranha>* temp = listPiranha.first;
         do{
             piranha &p = temp->info;
+			temp = temp->next;
             p.setHungerState();
             p.decCounter();
             if(p.getfoodCounter() == PIRANHA_FOOD_COUNTER_NAIK_TAHAP){ //bisa diatur
@@ -176,19 +177,19 @@ void akuarium::updatePiranha(){
             if(p.isMati()){
                 listPiranha.remove(p);
             }
-			temp = temp->next;
         } while(temp != NULL);
     }
 }
 
 void akuarium::updateKoin(){
-	 if (!getListKoin().isEmpty()) {
-      elmt<koin>* temp = getListKoin().first;
+	 if (!listKoin.isEmpty()) {
+      elmt<koin>* temp = listKoin.first;
       do {
-        if(temp->info.getY() >= SCREEN_HEIGHT){
-			getListKoin().remove(temp->info);	
+		koin &k = temp->info;
+		temp = temp->next;
+        if(k.getY() >= SCREEN_HEIGHT && !listKoin.isEmpty()){
+			listKoin.remove(k);	
 		}
-        temp = temp->next;
       } while (temp != NULL);
     }
 }
