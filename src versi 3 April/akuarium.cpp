@@ -90,11 +90,7 @@ guppy akuarium::searchGuppy(double x, double y) {
 
  //Mengembalikan petak terdekat dari x y yang terdapat Koin
 koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat dari x y yang terdapat Koin
-<<<<<<< HEAD
-	//if(koinAvailable()){
-=======
 	// if(koinAvailable()){
->>>>>>> da1a7cdb4070f0ed3ce12fb96c0af794d0121cb7
 		elmt<koin>* temp = listKoin.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 		koin k = temp->info;
@@ -106,11 +102,7 @@ koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat da
 			}
 		} while(temp->next != NULL);
 		return k;
-<<<<<<< HEAD
-	//}
-=======
 	// }
->>>>>>> da1a7cdb4070f0ed3ce12fb96c0af794d0121cb7
 }
 
 //update status akuarium
@@ -143,12 +135,8 @@ void akuarium::updateGuppy(){
         do{
             //update status guppy
             guppy &g = temp->info;
-<<<<<<< HEAD
-						cout << g.getHungerState();
-=======
 			temp = temp->next;
 			cout << g.getHungerState();
->>>>>>> da1a7cdb4070f0ed3ce12fb96c0af794d0121cb7
             g.setHungerState();
             g.decCounter();
             if(g.getfoodCounter() == GUPPY_FOOD_COUNTER_NAIK_TAHAP){ //bisa diatur
@@ -200,7 +188,7 @@ void akuarium::updateKoin(){
 		koin &k = temp->info;
 		temp = temp->next;
         if(k.getY() >= SCREEN_HEIGHT && !listKoin.isEmpty()){
-			listKoin.remove(k);	
+			listKoin.remove(k);
 		}
       } while (temp != NULL);
     }
