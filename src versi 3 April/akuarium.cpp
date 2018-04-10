@@ -115,7 +115,7 @@ void akuarium::updateMakanan(){
     if(!listMakanan.isEmpty()){
         elmt<makanan>* temp = listMakanan.first;
         do{
-            makanan m = temp->info;
+            makanan &m = temp->info;
             if(!m.isEdible()){
                 listMakanan.remove(m);
             }
@@ -129,7 +129,7 @@ void akuarium::updateGuppy(){
         elmt<guppy>* temp = listGuppy.first;
         do{
             //update status guppy
-            guppy g = temp->info;
+            guppy &g = temp->info;
             g.setHungerState();
             g.decCounter();
             if(g.getfoodCounter() == 5){ //bisa diatur
@@ -137,7 +137,7 @@ void akuarium::updateGuppy(){
                     g.setFoodCounter(g.getfoodCounter()+1);
                 }
             }
-            if(g.getHunger() == 0){
+            if(g.getHunger() <= 0){
                 g.setMati(true);
 				cout << "masuk";
             }
@@ -156,7 +156,7 @@ void akuarium::updatePiranha(){
     if(!listPiranha.isEmpty()){
         elmt<piranha>* temp = listPiranha.first;
         do{
-            piranha p = temp->info;
+            piranha &p = temp->info;
             p.setHungerState();
             p.decCounter();
             if(p.getfoodCounter() == 3){ //bisa diatur
@@ -168,7 +168,7 @@ void akuarium::updatePiranha(){
                 p.setMati(true);
             }
 
-            if(!p.isMati()){
+            if(p.isMati()){
                 listPiranha.remove(p);
             }
 			temp = temp->next;
