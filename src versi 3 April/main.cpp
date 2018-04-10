@@ -11,7 +11,8 @@ void drawAquarium(akuarium tank);
 
 int main( int argc, char* args[] )
 {
-    controller control(akuarium(SCREEN_WIDTH, SCREEN_HEIGHT));
+    akuarium a(SCREEN_WIDTH, SCREEN_HEIGHT);
+    controller control(a);
     control.addGuppy(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
     control.addGuppy(SCREEN_HEIGHT/2, SCREEN_WIDTH/2);
     control.addGuppy(SCREEN_WIDTH/2, SCREEN_WIDTH/2);

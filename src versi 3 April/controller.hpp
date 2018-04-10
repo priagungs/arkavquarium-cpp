@@ -5,6 +5,8 @@
 #include "makanan.hpp"
 #include "koin.hpp"
 #include "siput.hpp"
+#include "oop.hpp"
+#include <cmath>
 
 #ifndef CONTROLLER_H
 #define CONTROLLER_H

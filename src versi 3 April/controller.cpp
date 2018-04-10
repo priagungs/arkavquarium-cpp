@@ -4,7 +4,7 @@
 
 controller::controller(akuarium a){
     this->a = a;
-    this->timestamp = 0;
+    this->timestamp = 0.01;
 }
 
 akuarium controller::getAkuarium() {
@@ -36,34 +36,46 @@ void controller::addMakanan(double x){
 }
 
 void controller::processAkuarium(){
-    //a.updateAkuarium();
+    // a.updateAkuarium();
     processPiranha();
-    //processGuppy();
+    processGuppy();
     processMakanan();
     processSiput();
 }
 
 void controller::processGuppy(){
-    // update status semua guppy yang ada
     if(!a.getListGuppy().isEmpty()){
         elmt<guppy>* temp = a.getListGuppy().first;
         do{
-            guppy g = temp->info;
+            guppy &g = temp->info;
             // mencari makan untuk yang sudah lapar
             if(g.getHungerState()){
-                int x,y;
-                a.searchMakanan(g.getX(),g.getY(),x,y);
-                g.moveTowardsTarget(x,y,timestamp);
+                makanan m = a.searchMakanan(g.getX(), g.getY());
+                if(abs(m.getX()-g.getX()) < 1 && abs(m.getY()-g.getY()) < 1){
+                    a.getListMakanan().remove(m);
+                    g.setFoodCounter(g.getfoodCounter()+1);
+                    g.setHunger(1000);
+                }
+                else{
+                    g.moveTowardsTarget(g.getX(), g.getY(),timestamp);
+                }
+
             }
             //bergerak random jika tidak lapar
             else{
                 g.move(timestamp);
             }
 
+            //jika nabrak tembok
+            if(g.getX() <= 0 || g.getY() <= 0 || g.getX() >= SCREEN_WIDTH || g.getY() >= SCREEN_HEIGHT){
+                g.setDirection(rand()%7);
+            }
+
             // mengeluarkan koin bagi yang siap mengeluarkan koin
             if(PERIODE_KOIN%g.getHunger() == 0){
                 addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_DEFAULT);
             }
+            temp = temp->next;
 
         } while(temp != NULL);
     }

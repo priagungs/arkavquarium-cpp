@@ -4,7 +4,7 @@
 using namespace std;
 
 ikan::ikan() {
-	hunger = 50; //BERAPAAAA? EDIT LAGI INI
+	hunger = 1000; //BERAPAAAA? EDIT LAGI INI
 	tahap = 1;
 	foodCounter = 0;
 	moveCounter = rand() % 10000;
@@ -31,7 +31,7 @@ bool ikan::getHungerState(){
 	return hungerState;
 }
 void ikan::setHungerState(){
-	hunger++;
+	hunger--;
 	if(hunger < 10){ //bisa disesuaikan angka nya
 		hungerState = true;
 	}

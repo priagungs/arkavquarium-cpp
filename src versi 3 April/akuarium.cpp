@@ -53,55 +53,52 @@ bool akuarium::makananAvailable(){
 }
 
 //Mengembalikan petak terdekat dari x y yang terdapat makanan
-void akuarium::searchMakanan(int x, int y, int& xt, int& yt) {
+makanan akuarium::searchMakanan(double x, double y) {
 	if(makananAvailable()){
 		elmt<makanan>* temp = listMakanan.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
-		xt = temp->info.getX();
-		yt = temp->info.getY();
+		makanan m = temp->info;
 		do{
 			temp = temp->next;
 			if(jarak > sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2))){
 				jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
-				xt = temp->info.getX();
-				yt = temp->info.getY();
+				m = temp->info;
 			}
 		} while(temp->next != NULL);
+		return m;
 	}
 }
 //Mengembalikan petak terdekat dari x y yang terdapat Guppy
-void akuarium::searchGuppy(int x, int y, int& xt, int& yt) {
+guppy akuarium::searchGuppy(double x, double y) {
 	if(guppyAvailable()){
 		elmt<guppy>* temp = listGuppy.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
-		xt = temp->info.getX();
-		yt = temp->info.getY();
+		guppy g = temp->info;
 		do{
 			temp = temp->next;
 			if(jarak > sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2))){
 				jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
-				xt = temp->info.getX();
-				yt = temp->info.getY();
+				g = temp->info;
 			}
 		} while(temp->next != NULL);
+		return g;
 	}
 }
 
  //Mengembalikan petak terdekat dari x y yang terdapat Koin
-void akuarium::searchKoin(int x, int y, int& xt, int& yt){ //Mengembalikan petak terdekat dari x y yang terdapat Koin
+koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat dari x y yang terdapat Koin
 	if(koinAvailable()){
 		elmt<koin>* temp = listKoin.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
-		xt = temp->info.getX();
-		yt = temp->info.getY();
+		koin k = temp->info;
 		do{
 			temp = temp->next;
 			if(jarak > sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2))){
 				jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
-				xt = temp->info.getX();
-				yt = temp->info.getY();
+				k = temp->info;
 			}
 		} while(temp->next != NULL);
+		return k;
 	}
 }
 
@@ -117,10 +114,10 @@ void akuarium::updateMakanan(){
         elmt<makanan>* temp = listMakanan.first;
         do{
             makanan m = temp->info;
-            temp = temp->next;
             if(!m.isEdible()){
                 listMakanan.remove(m);
             }
+			temp = temp->next;
         } while(temp != NULL);
     }
 }
@@ -143,10 +140,11 @@ void akuarium::updateGuppy(){
             }
 
             //update eksistensi guppy
-            temp = temp->next;
             if(!g.isMati()){
                 listGuppy.remove(g);
             }
+
+			temp = temp->next;
         } while(temp != NULL);
     }
 }
@@ -167,10 +165,10 @@ void akuarium::updatePiranha(){
                 p.setMati(true);
             }
 
-            temp = temp->next;
             if(!p.isMati()){
                 listPiranha.remove(p);
             }
+			temp = temp->next;
         } while(temp != NULL);
     }
 }
