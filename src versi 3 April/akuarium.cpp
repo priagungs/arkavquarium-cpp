@@ -90,7 +90,7 @@ guppy akuarium::searchGuppy(double x, double y) {
 
  //Mengembalikan petak terdekat dari x y yang terdapat Koin
 koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat dari x y yang terdapat Koin
-	if(koinAvailable()){
+	//if(koinAvailable()){
 		elmt<koin>* temp = listKoin.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 		koin k = temp->info;
@@ -102,7 +102,7 @@ koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat da
 			}
 		} while(temp->next != NULL);
 		return k;
-	}
+	//}
 }
 
 //update status akuarium
@@ -134,7 +134,7 @@ void akuarium::updateGuppy(){
         do{
             //update status guppy
             guppy &g = temp->info;
-			cout << g.getHungerState();
+						cout << g.getHungerState();
             g.setHungerState();
             g.decCounter();
             if(g.getfoodCounter() == GUPPY_FOOD_COUNTER_NAIK_TAHAP){ //bisa diatur
