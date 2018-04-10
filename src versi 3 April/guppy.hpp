@@ -18,8 +18,8 @@ class guppy : public ikan, public bendaHidup{
 	  guppy();
 		guppy(double, double);
 		//Mengubah salah satu isi makanan edible pada list menjadi non edible
-		void move(double time); // gerak arah random selama time
-		void moveTowardsTarget(double x, double y, double time); //gerak arah x selama time
+		void move(double times); // gerak arah random selama time
+		void moveTowardsTarget(double x, double y, double times); //gerak arah x selama time
 		bool operator==(guppy g);
 		bool operator!=(guppy g);
 

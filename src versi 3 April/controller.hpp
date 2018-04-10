@@ -6,6 +6,7 @@
 #include "koin.hpp"
 #include "siput.hpp"
 #include "oop.hpp"
+#include "time.h"
 #include <cmath>
 
 #ifndef CONTROLLER_H

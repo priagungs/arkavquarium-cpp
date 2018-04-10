@@ -48,33 +48,33 @@ void controller::processGuppy(){
         elmt<guppy>* temp = a.getListGuppy().first;
         do{
             guppy &g = temp->info;
-            // mencari makan untuk yang sudah lapar
-            if(g.getHungerState()){
+            //mencari makan untuk yang sudah lapar
+            if(g.getHungerState() && a.makananAvailable()){
                 makanan m = a.searchMakanan(g.getX(), g.getY());
-                if(abs(m.getX()-g.getX()) < 1 && abs(m.getY()-g.getY()) < 1){
+                if(abs(m.getX()-g.getX()) < 0.1 && abs(m.getY()-g.getY()) < 0.1){
                     a.getListMakanan().remove(m);
                     g.setFoodCounter(g.getfoodCounter()+1);
                     g.setHunger(1000);
                 }
                 else{
-                    g.moveTowardsTarget(g.getX(), g.getY(),timestamp);
+                    g.moveTowardsTarget(m.getX(), m.getY(),timestamp);
                 }
-
-            }
+            }else{
             //bergerak random jika tidak lapar
-            else{
                 g.move(timestamp);
             }
 
             //jika nabrak tembok
             if(g.getX() <= 0 || g.getY() <= 0 || g.getX() >= SCREEN_WIDTH || g.getY() >= SCREEN_HEIGHT){
-                g.setDirection(rand()%7);
+                g.setDirection(rand()%360);
+                g.modDirection();
             }
 
             // mengeluarkan koin bagi yang siap mengeluarkan koin
-            if(PERIODE_KOIN%g.getHunger() == 0){
+            if(g.getHunger()%PERIODE_KOIN == 0){
                 addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_DEFAULT);
             }
+            g.setHungerState();
             temp = temp->next;
 
         } while(temp != NULL);

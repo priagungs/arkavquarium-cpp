@@ -14,8 +14,8 @@ int main( int argc, char* args[] )
     akuarium a(SCREEN_WIDTH, SCREEN_HEIGHT);
     controller control(a);
     control.addGuppy(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
-    control.addGuppy(SCREEN_HEIGHT/2, SCREEN_WIDTH/2);
-    control.addGuppy(SCREEN_WIDTH/2, SCREEN_WIDTH/2);
+  //  control.addGuppy(SCREEN_HEIGHT/2, SCREEN_WIDTH/2);
+  //  control.addGuppy(SCREEN_WIDTH/2, SCREEN_WIDTH/2);
 
     init();
     // Menghitung FPS
@@ -109,7 +109,12 @@ void drawAquarium(akuarium tank) {
     if (!tank.getListGuppy().isEmpty()) {
         elmt<guppy>* currentGuppy = tank.getListGuppy().first;
         while (currentGuppy != NULL) {
-            draw_image("guppykanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+            if ((currentGuppy->info.getDirection()>=0 &&  currentGuppy->info.getDirection()<90) ||
+                (currentGuppy->info.getDirection()>=270 &&  currentGuppy->info.getDirection()<360)) {
+              draw_image("guppykanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+            } else {
+              draw_image("guppykiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+            }
             currentGuppy = currentGuppy->next;
         }
     }

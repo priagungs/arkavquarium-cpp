@@ -24,6 +24,15 @@ double bendaHidup::getX() {return x;}
 double bendaHidup::getY() {return y;}
 double bendaHidup::getDirection() {return direction;}
 
+void bendaHidup::modDirection() {
+	while (direction>=360) {
+		direction -= 360;
+	}
+	while (direction<0) {
+		direction +=360;
+	}
+}
+
 void bendaHidup::setX(double X) {x = X;}
 void bendaHidup::setY(double Y) {y = Y;}
 void bendaHidup::setDirection(double d) {direction = d;}

@@ -54,23 +54,25 @@ bool akuarium::makananAvailable(){
 
 //Mengembalikan petak terdekat dari x y yang terdapat makanan
 makanan akuarium::searchMakanan(double x, double y) {
-	if(makananAvailable()){
+	//if(makananAvailable()){
 		elmt<makanan>* temp = listMakanan.first;
-		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
+
 		makanan m = temp->info;
-		do{
+		double jarak = sqrt(pow(x-m.getX(), 2) + pow(y-m.getY(), 2));
+
+		while (temp->next != NULL) {
 			temp = temp->next;
 			if(jarak > sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2))){
 				jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 				m = temp->info;
 			}
-		} while(temp->next != NULL);
+		}
 		return m;
-	}
+	//}
 }
 //Mengembalikan petak terdekat dari x y yang terdapat Guppy
 guppy akuarium::searchGuppy(double x, double y) {
-	if(guppyAvailable()){
+	//if(guppyAvailable()){
 		elmt<guppy>* temp = listGuppy.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 		guppy g = temp->info;
@@ -82,12 +84,12 @@ guppy akuarium::searchGuppy(double x, double y) {
 			}
 		} while(temp->next != NULL);
 		return g;
-	}
+	//}
 }
 
  //Mengembalikan petak terdekat dari x y yang terdapat Koin
 koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat dari x y yang terdapat Koin
-	if(koinAvailable()){
+	//if(koinAvailable()){
 		elmt<koin>* temp = listKoin.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 		koin k = temp->info;
@@ -99,7 +101,7 @@ koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat da
 			}
 		} while(temp->next != NULL);
 		return k;
-	}
+	//}
 }
 
 //update status akuarium

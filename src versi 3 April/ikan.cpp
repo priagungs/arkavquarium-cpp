@@ -32,7 +32,7 @@ bool ikan::getHungerState(){
 }
 void ikan::setHungerState(){
 	hunger--;
-	if(hunger < 10){ //bisa disesuaikan angka nya
+	if(hunger < 200){ //bisa disesuaikan angka nya
 		hungerState = true;
 	}
 	else{

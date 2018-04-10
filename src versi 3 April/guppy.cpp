@@ -6,6 +6,7 @@
 #include "List.hpp"
 #include <iostream>
 #include <math.h>
+#include <ctime>
 using namespace std;
 
 //Ctor
@@ -15,19 +16,19 @@ guppy::guppy() : ikan(), bendaHidup(0,0) {
 guppy::guppy(double X, double Y) : ikan(), bendaHidup(X, Y) {
 }
 
-void guppy::move(double time){ // gerak arah random selama time
-    if(moveCounter == 1){
-        decCounter();
-        direction = rand() % 7;
-    }
-    this->x += speed*cos(direction)*time;
-    this->y += speed*sin(direction)*time;
+void guppy::move(double times){ // gerak arah random selama time
+  decCounter();
+  if(moveCounter == 1){
+      direction = rand() % 360;
+  }
+  this->x += speed*cos(direction* 3.14159265 / 180.0)*times;
+  this->y += speed*sin(direction* 3.14159265 / 180.0)*times;
 }
 
-void guppy::moveTowardsTarget(double x, double y, double time){ //gerak arah x selama time
+void guppy::moveTowardsTarget(double x, double y, double times){ //gerak arah x selama time
     direction = atan2(y-this->y, x-this->x);
-    this->x += speed*cos(direction)*time;
-    this->y += speed*sin(direction)*time;
+    this->x += speed*cos(direction)*times;
+    this->y += speed*sin(direction)*times;
 }
 
 bool guppy::operator==(guppy g) {
