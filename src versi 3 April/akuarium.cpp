@@ -164,7 +164,7 @@ void akuarium::updatePiranha(){
         elmt<piranha>* temp = listPiranha.first;
         do{
             piranha &p = temp->info;
-			temp = temp->next;
+						temp = temp->next;
             p.setHungerState();
             p.decCounter();
             if(p.getfoodCounter() == PIRANHA_FOOD_COUNTER_NAIK_TAHAP){ //bisa diatur

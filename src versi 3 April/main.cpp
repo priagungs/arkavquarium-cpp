@@ -73,7 +73,7 @@ int main( int argc, char* args[] )
                 cx = SCREEN_WIDTH / 2;
                 break;
             case SDLK_x:
-                control.addMakanan(SCREEN_WIDTH/2);
+                control.addMakanan(cx);
                 break;
             }
         }
@@ -92,6 +92,7 @@ int main( int argc, char* args[] )
 
         // Gambar ikan di posisi yang tepat.
         clear_screen();
+        draw_image("pointer.png", cx, cy);
 		//draw_image("background.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
         //draw_text("Panah untuk bergerak, r untuk reset, x untuk keluar", 18, 10, 10, 0, 0, 0);
         //draw_text(fps_text, 18, 10, 30, 0, 0, 0);

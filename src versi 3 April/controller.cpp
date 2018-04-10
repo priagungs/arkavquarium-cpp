@@ -107,7 +107,38 @@ void controller::processKoin(){
 }
 
 void controller::processPiranha() {
+    if(!a.getListPiranha().isEmpty()){
+        elmt<piranha>* temp = a.getListPiranha().first;
+        do{
+            piranha &p = temp->info;
+            temp = temp->next;
+            //mencari makan untuk yang sudah lapar
+            if(p.getHungerState() && a.guppyAvailable()){
+                guppy g = a.searchGuppy(p.getX(), p.getY());
+                if(abs(g.getX()-p.getX()) < 0.1 && abs(g.getY()-p.getY()) < 0.1){
+                    a.getListGuppy().remove(g);
+                    p.setFoodCounter(p.getfoodCounter()+1);
+                    p.setHunger(PIRANHA_HUNGER);
+                }
+                else{
+                    p.moveTowardsTarget(g.getX(), g.getY(),TIMESTAMP_IKAN);
+                }
+            }else{
+            //bergerak random jika tidak lapar
+                p.move(TIMESTAMP_IKAN);
+            }
 
+            //jika nabrak tembok
+            if(p.getX() <= 0 || p.getY() <= 0 || p.getX() >= SCREEN_WIDTH || p.getY() >= SCREEN_HEIGHT){
+                p.setDirection(p.getDirection()+M_PI);
+            }
+
+            // mengeluarkan koin bagi yang siap mengeluarkan koin
+            if(p.getHunger()%PERIODE_KOIN == 0){
+                addKoin(p.getX(), p.getY(), NILAI_KOIN_TAHAP3);
+            }
+        } while(temp != NULL);
+    }
 }
 void controller::processSiput(){
     if(!a.getListKoin().isEmpty()){
