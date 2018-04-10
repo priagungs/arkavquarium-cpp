@@ -3,6 +3,8 @@
 
 controller::controller(akuarium a){
     this->a = a;
+	uang = 700;
+	levelTelur = 0;
 }
 
 akuarium controller::getAkuarium() {
@@ -18,16 +20,19 @@ void controller::addKoin(double x, double y, double nilai){
 void controller::addGuppy(double X, double Y){
     guppy g(X,Y);
     a.getListGuppy().add(g);
+	uang -= HARGA_GUPPY;
 }
 
 void controller::addPiranha(){
     piranha p;
     a.getListPiranha().add(p);
+	uang -= HARGA_PIRANHA;
 }
 
 void controller::addMakanan(double x){
     makanan m(x);
     a.getListMakanan().add(m);
+	uang -= HARGA_MAKANAN;
 }
 
 void controller::processAkuarium(){
@@ -112,10 +117,11 @@ void controller::processPiranha() {
             //mencari makan untuk yang sudah lapar
             if(p.getHungerState() && a.guppyAvailable()){
                 guppy g = a.searchGuppy(p.getX(), p.getY());
-                if(abs(g.getX()-p.getX()) < 0.1 && abs(g.getY()-p.getY()) < 0.1){
+                if(abs(g.getX()-p.getX()) < 1 && abs(g.getY()-p.getY()) < 1){
                     a.getListGuppy().remove(g);
                     p.setFoodCounter(p.getfoodCounter()+1);
                     p.setHunger(PIRANHA_HUNGER);
+					addKoin(p.getX(), p.getY(), NILAI_KOIN_TAHAP3);
                 }
                 else{
                     p.moveTowardsTarget(g.getX(), g.getY(),TIMESTAMP_IKAN);
@@ -129,11 +135,6 @@ void controller::processPiranha() {
             if(p.getX() <= 0 || p.getY() <= 0 || p.getX() >= SCREEN_WIDTH || p.getY() >= SCREEN_HEIGHT){
                 p.setDirection(p.getDirection()+M_PI);
             }
-
-            // mengeluarkan koin bagi yang siap mengeluarkan koin
-            if(p.getHunger()%PERIODE_KOIN == 0){
-                addKoin(p.getX(), p.getY(), NILAI_KOIN_TAHAP3);
-            }
         } while(temp != NULL);
     }
 }
@@ -142,7 +143,8 @@ void controller::processSiput(){
         koin k = a.searchKoin(a.getSiput().getX(), a.getSiput().getY());
         if(abs(k.getX()-a.getSiput().getX()) < 10){
             if(abs(k.getY()-a.getSiput().getY()) < 10 && k.getY() < SCREEN_HEIGHT){
-                a.getListKoin().remove(k);
+                uang += k.getNilai();
+				a.getListKoin().remove(k);
             }
             else{
                 a.getSiput().move(0);

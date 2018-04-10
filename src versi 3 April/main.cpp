@@ -24,7 +24,7 @@ int main( int argc, char* args[] )
     double fpc_start = time_since_start();
     std::string fps_text = "FPS: 0";
 
-    bool running = true;
+    //bool running = true;
 
         // Posisi ikan
     double cy = SCREEN_HEIGHT / 2;
@@ -34,15 +34,16 @@ int main( int argc, char* args[] )
     double prevtime = time_since_start();
 
 
-    while (running) {
+    while (control.levelTelur < 3) {
+		cout << control.uang;
         double now = time_since_start();
         double sec_since_last = now - prevtime;
         prevtime = now;
 
         handle_input();
-        if (quit_pressed()) {
-            running = false;
-        }
+        //if (quit_pressed()) {
+            //running = false;
+        //}
 
         // Gerakkan ikan selama tombol panah ditekan
         // Kecepatan dikalikan dengan perbedaan waktu supaya kecepatan ikan
@@ -68,13 +69,40 @@ int main( int argc, char* args[] )
         for (auto key : get_tapped_keys()) {
             switch (key) {
             // r untuk reset
-            case SDLK_r:
-                control.addPiranha();
+            case SDLK_p:
+				if (control.uang >= HARGA_PIRANHA) {
+					control.addPiranha();					
+				}
                 break;
-            case SDLK_x:
-                control.addMakanan(cx);
+            case SDLK_m:
+				if (control.uang >= HARGA_MAKANAN) {
+					control.addMakanan(cx);					
+				}
                 break;
-            }
+			case SDLK_n:
+				if (control.uang >= HARGA_GUPPY) {
+					control.addGuppy(cx,cy);					
+				}
+                break;
+            case SDLK_t:
+				if (control.levelTelur == 0) {
+					if (control.uang >= HARGA_TELUR1) {
+						control.levelTelur++;
+						control.uang -= HARGA_TELUR1;
+					}
+				} else if (control.levelTelur == 1) {
+					if (control.uang >= HARGA_TELUR2) {
+						control.levelTelur++;
+						control.uang -= HARGA_TELUR2;
+					}
+				} else if (control.levelTelur == 2) {
+					if (control.uang >= HARGA_TELUR3) {
+						control.levelTelur++;
+						control.uang -= HARGA_TELUR3;
+					}
+				}
+                break;
+			}
         }
 
         // Update FPS setiap detik
@@ -88,7 +116,6 @@ int main( int argc, char* args[] )
             frames_passed = 0;
         }
         control.processAkuarium();
-        cout << "aoskdoadk";
         // Gambar ikan di posisi yang tepat.
         clear_screen();
         draw_image("pointer.png", cx, cy);
@@ -99,6 +126,8 @@ int main( int argc, char* args[] )
         drawAquarium(control.getAkuarium());
         update_screen();
     }
+	
+	cout << control.uang << endl;
 
     close();
 
