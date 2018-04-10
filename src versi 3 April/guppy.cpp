@@ -22,8 +22,8 @@ void guppy::move(double times){ // gerak arah random selama time
   if(moveCounter == 1){
       direction = rand()*M_PI*2/double(RAND_MAX) ;
   }
-  this->x += speed*cos(direction* 3.14159265 / 180.0)*times;
-  this->y += speed*sin(direction* 3.14159265 / 180.0)*times;
+  this->x += speed*cos(direction)*times;
+  this->y += speed*sin(direction)*times;
 }
 
 void guppy::moveTowardsTarget(double x, double y, double times){ //gerak arah x selama time

@@ -33,7 +33,6 @@ public:
     void setTime(double);
 private:
     akuarium a;
-    double timestamp;
 };
 
 #endif
