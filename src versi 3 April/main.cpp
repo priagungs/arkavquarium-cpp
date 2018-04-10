@@ -1,6 +1,7 @@
 #include "oop.hpp"
 #include "akuarium.hpp"
 #include "controller.hpp"
+#include "konstanta.hpp"
 #include <iostream>
 #include <math.h>
 #include <sstream>
@@ -91,9 +92,16 @@ int main( int argc, char* args[] )
 
         // Gambar ikan di posisi yang tepat.
         clear_screen();
+<<<<<<< HEAD
         draw_text("Panah untuk bergerak, r untuk reset, x untuk keluar", 18, 10, 10, 0, 0, 0);
         draw_text(fps_text, 18, 10, 30, 0, 0, 0);
         draw_image("pointer.png", cx, cy);
+=======
+		//draw_image("background.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+        //draw_text("Panah untuk bergerak, r untuk reset, x untuk keluar", 18, 10, 10, 0, 0, 0);
+        //draw_text(fps_text, 18, 10, 30, 0, 0, 0);
+        //draw_image("ikan.png", cx, cy);
+>>>>>>> a9c290ffc57b0af2d95a320340bb354d1a54d0cc
         drawAquarium(control.getAkuarium());
         update_screen();
     }
@@ -104,25 +112,90 @@ int main( int argc, char* args[] )
 }
 
 void drawAquarium(akuarium tank) {
-    draw_image("snail.png", tank.getSiput().getX(), tank.getSiput().getY());
+    
+	if ((tank.getSiput().getDirection()>=0 &&  tank.getSiput().getDirection()<0.5*M_PI) ||
+		(tank.getSiput().getDirection()>=1.5*M_PI &&  tank.getSiput().getDirection()<2*M_PI)) {
+
+		draw_image("siputkanan.png", tank.getSiput().getX(), tank.getSiput().getY());			
+	} else {
+		draw_image("siputkanan.png", tank.getSiput().getX(), tank.getSiput().getY());
+	}
 
     if (!tank.getListGuppy().isEmpty()) {
         elmt<guppy>* currentGuppy = tank.getListGuppy().first;
         while (currentGuppy != NULL) {
-            if ((currentGuppy->info.getDirection()>=0 &&  currentGuppy->info.getDirection()<90) ||
-                (currentGuppy->info.getDirection()>=270 &&  currentGuppy->info.getDirection()<360)) {
-              draw_image("guppykanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-            } else {
-              draw_image("guppykiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
-            }
+            if ((currentGuppy->info.getDirection()>=0 &&  currentGuppy->info.getDirection()<0.5*M_PI) ||
+                (currentGuppy->info.getDirection()>=1.5*M_PI &&  currentGuppy->info.getDirection()<2*M_PI)) { //Hadap kanan
+				if (currentGuppy->info.getTahap()==1) {
+					if (currentGuppy->info.getHungerState()) { //guppy lapar
+						draw_image("guppy1laparkanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					} else {
+						draw_image("guppy1kanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					}
+				} else if (currentGuppy->info.getTahap() == 2) {
+					if (currentGuppy->info.getHungerState()) { //guppy lapar
+						draw_image("guppy2laparkanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					} else {
+						draw_image("guppy2kanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					}
+				} else if (currentGuppy->info.getTahap() == 3) {
+					if (currentGuppy->info.getHungerState()) { //guppy lapar
+						draw_image("guppy3laparkanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					} else {
+						draw_image("guppy3kanan.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					}
+				}
+			} else { //Hadap kiri
+				if (currentGuppy->info.getTahap()==1) {
+					if (currentGuppy->info.getHungerState()) { //guppy lapar
+						draw_image("guppy1laparkiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					} else {
+						draw_image("guppy1kiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					}
+				} else if (currentGuppy->info.getTahap() == 2) {
+					if (currentGuppy->info.getHungerState()) { //guppy lapar
+						draw_image("guppy2laparkiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					} else {
+						draw_image("guppy2kiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					}
+				} else if (currentGuppy->info.getTahap() == 3) {
+					if (currentGuppy->info.getHungerState()) { //guppy lapar
+						draw_image("guppy3laparkiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					} else {
+						draw_image("guppy3kiri.png", currentGuppy->info.getX(), currentGuppy->info.getY());
+					}
+				}
+			}
+
             currentGuppy = currentGuppy->next;
         }
     }
+	
+	if (!tank.getListPiranha().isEmpty()) {
+        elmt<piranha>* currentPiranha = tank.getListPiranha().first;
+        while (currentPiranha != NULL) {
+            if ((currentPiranha->info.getDirection()>=0 &&  currentPiranha->info.getDirection()<0.5*M_PI) ||
+                (currentPiranha->info.getDirection()>=1.5*M_PI &&  currentPiranha->info.getDirection()<2*M_PI)) { //Hadap kanan
+				if (currentPiranha->info.getHungerState()) { //piranha lapar
+						draw_image("piranhalaparkanan.png", currentPiranha->info.getX(), currentPiranha->info.getY());
+					} else {
+						draw_image("piranhakanan.png", currentPiranha->info.getX(), currentPiranha->info.getY());
+					}
+			} else {
+				if (currentPiranha->info.getHungerState()) { //piranha lapar
+						draw_image("piranhalaparkiri.png", currentPiranha->info.getX(), currentPiranha->info.getY());
+					} else {
+						draw_image("piranhakiri.png", currentPiranha->info.getX(), currentPiranha->info.getY());
+					}
+			}
+			currentPiranha = currentPiranha->next;
+		}
+	}
 
     if (!tank.getListMakanan().isEmpty()) {
         elmt<makanan>* currentFood = tank.getListMakanan().first;
         while (currentFood != NULL) {
-            draw_image("upil.png", currentFood->info.getX(), currentFood->info.getY());
+            draw_image("food.png", currentFood->info.getX(), currentFood->info.getY());
             currentFood = currentFood->next;
         }
     }
@@ -130,8 +203,15 @@ void drawAquarium(akuarium tank) {
     if (!tank.getListKoin().isEmpty()) {
       elmt<koin>* temp = tank.getListKoin().first;
       do {
-        draw_image("koin.png", temp->info.getX(), temp->info.getY());
+		if (temp->info.getNilai() == NILAI_KOIN_TAHAP1) {
+			draw_image("koin1.png", temp->info.getX(), temp->info.getY());
+		} else if (temp->info.getNilai() == NILAI_KOIN_TAHAP2) {
+			draw_image("koin2.png", temp->info.getX(), temp->info.getY());
+		} else if (temp->info.getNilai()  == NILAI_KOIN_TAHAP3) {
+			draw_image("diamond.png", temp->info.getX(), temp->info.getY());
+		}
         temp = temp->next;
       } while (temp != NULL);
     }
 }
+

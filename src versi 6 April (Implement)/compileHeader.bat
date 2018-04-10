@@ -1,1 +1,0 @@
-g++ akuarium.hpp bendaHidup.hpp bendaMati.hpp controller.hpp entitas.hpp guppy.hpp ikan.hpp koin.hpp List.hpp makanan.hpp petak.hpp piranha.hpp siput.hpp
