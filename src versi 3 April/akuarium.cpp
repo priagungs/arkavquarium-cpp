@@ -117,7 +117,8 @@ void akuarium::updateMakanan(){
     if(!listMakanan.isEmpty()){
         elmt<makanan>* temp = listMakanan.first;
         do{
-            makanan &m = temp->info;
+			elmt<makanan>* temp2 = temp;
+            makanan &m = temp2->info;
 			temp = temp->next;
 			if(m.getY() >= SCREEN_HEIGHT && !listMakanan.isEmpty()){
 				listMakanan.remove(m);
@@ -134,7 +135,8 @@ void akuarium::updateGuppy(){
         elmt<guppy>* temp = listGuppy.first;
         do{
             //update status guppy
-            guppy &g = temp->info;
+			elmt<guppy>* temp2 = temp;
+            guppy &g = temp2->info;
 			temp = temp->next;
 			cout << g.getHungerState();
             g.setHungerState();
@@ -152,7 +154,7 @@ void akuarium::updateGuppy(){
             //update eksistensi guppy
             if(g.isMati()){
                 listGuppy.remove(g);
-            }
+			}
         } while(temp != NULL);
     }
 }
@@ -183,6 +185,7 @@ void akuarium::updatePiranha(){
 
 void akuarium::updateKoin(){
 	 if (!listKoin.isEmpty()) {
+<<<<<<< HEAD
       elmt<koin>* temp = listKoin.first;
       do {
 		koin &k = temp->info;
@@ -191,5 +194,16 @@ void akuarium::updateKoin(){
 			listKoin.remove(k);
 		}
       } while (temp != NULL);
+=======
+		elmt<koin>* temp = listKoin.first;
+		do {
+			elmt<koin>* temp2 = temp;
+			temp = temp->next;
+			koin &k = temp2->info;
+			if(k.getY() >= SCREEN_HEIGHT && !listKoin.isEmpty()){
+				listKoin.remove(k);	
+			}
+		} while (temp != NULL);
+>>>>>>> 08003f1bff22ed8ebee883d5b54a9e25628cf7bd
     }
 }

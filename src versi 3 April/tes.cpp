@@ -4,8 +4,6 @@ using namespace std;
 int main(){
     List<int> L;
     L.add(1);
-    L.add(2);
-    L.add(3);
     elmt<int>* temp = L.first;
     while(temp != NULL){
         cout << temp->info << endl;
@@ -13,8 +11,9 @@ int main(){
     }
     temp = L.first;
     while(temp != NULL){
-        if(temp->info == 2){
-            L.remove(2);
+        if(temp->info == 1){
+            L.remove(1);
+            L.remove(1);
         }
         temp = temp -> next;
     }
