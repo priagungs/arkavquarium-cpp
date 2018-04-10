@@ -139,10 +139,11 @@ void akuarium::updateGuppy(){
             }
             if(g.getHunger() == 0){
                 g.setMati(true);
+				cout << "masuk";
             }
 
             //update eksistensi guppy
-            if(!g.isMati()){
+            if(g.isMati()){
                 listGuppy.remove(g);
             }
 

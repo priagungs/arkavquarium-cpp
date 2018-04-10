@@ -36,7 +36,7 @@ void controller::addMakanan(double x){
 }
 
 void controller::processAkuarium(){
-    // a.updateAkuarium();
+    a.updateAkuarium();
     processPiranha();
     processGuppy();
     processMakanan();
@@ -73,7 +73,6 @@ void controller::processGuppy(){
             if(g.getHunger()%PERIODE_KOIN == 0){
                 addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_DEFAULT);
             }
-            g.setHungerState();
             temp = temp->next;
 
         } while(temp != NULL);
