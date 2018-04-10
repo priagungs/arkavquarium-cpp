@@ -69,8 +69,7 @@ int main( int argc, char* args[] )
             switch (key) {
             // r untuk reset
             case SDLK_r:
-                cy = SCREEN_HEIGHT / 2;
-                cx = SCREEN_WIDTH / 2;
+                control.addPiranha();
                 break;
             case SDLK_x:
                 control.addMakanan(cx);
