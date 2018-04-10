@@ -90,7 +90,7 @@ guppy akuarium::searchGuppy(double x, double y) {
 
  //Mengembalikan petak terdekat dari x y yang terdapat Koin
 koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat dari x y yang terdapat Koin
-	if(koinAvailable()){
+	// if(koinAvailable()){
 		elmt<koin>* temp = listKoin.first;
 		double jarak = sqrt(pow(x-temp->info.getX(), 2) + pow(y-temp->info.getY(), 2));
 		koin k = temp->info;
@@ -102,7 +102,7 @@ koin akuarium::searchKoin(double x, double y){ //Mengembalikan petak terdekat da
 			}
 		} while(temp->next != NULL);
 		return k;
-	}
+	// }
 }
 
 //update status akuarium
@@ -117,12 +117,12 @@ void akuarium::updateMakanan(){
         elmt<makanan>* temp = listMakanan.first;
         do{
             makanan &m = temp->info;
-			if(m.getY() >= SCREEN_HEIGHT){
+			if(m.getY() >= SCREEN_HEIGHT && !listMakanan.isEmpty()){
 				listMakanan.remove(m);
 			}
-            if(!m.isEdible()){
-                listMakanan.remove(m);
-            }
+            // if(!m.isEdible()){
+            //     listMakanan.remove(m);
+            // }
 			temp = temp->next;
         } while(temp != NULL);
     }
@@ -178,5 +178,17 @@ void akuarium::updatePiranha(){
             }
 			temp = temp->next;
         } while(temp != NULL);
+    }
+}
+
+void akuarium::updateKoin(){
+	 if (!getListKoin().isEmpty()) {
+      elmt<koin>* temp = getListKoin().first;
+      do {
+        if(temp->info.getY() >= SCREEN_HEIGHT){
+			getListKoin().remove(temp->info);	
+		}
+        temp = temp->next;
+      } while (temp != NULL);
     }
 }

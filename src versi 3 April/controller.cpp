@@ -35,6 +35,7 @@ void controller::processAkuarium(){
     processGuppy();
     processMakanan();
     processSiput();
+    processKoin();
 }
 
 void controller::processGuppy(){
@@ -82,6 +83,16 @@ void controller::processMakanan() {
       elmt<makanan>* temp = a.getListMakanan().first;
       do {
         temp->info.move(TIMESTAMP_MAKANAN);
+        temp = temp->next;
+      } while (temp != NULL);
+    }
+}
+
+void controller::processKoin(){
+    if (!a.getListKoin().isEmpty()) {
+      elmt<koin>* temp = a.getListKoin().first;
+      do {
+        temp->info.move(TIMESTAMP_KOIN);
         temp = temp->next;
       } while (temp != NULL);
     }

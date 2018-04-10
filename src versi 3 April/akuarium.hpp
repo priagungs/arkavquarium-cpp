@@ -43,6 +43,7 @@ class akuarium {
 		void updateMakanan();
 		void updatePiranha();
 		void updateGuppy();
+		void updateKoin();
 
 	private:
 		int ukuranX; //Menyimpan ukuran panjang akuarium

@@ -24,6 +24,7 @@ public:
     void processPiranha();
     void processMakanan();
     void processSiput();
+    void processKoin();
 
     void addKoin(double,double,double);
     void addGuppy(double X, double Y);

@@ -126,4 +126,12 @@ void drawAquarium(akuarium tank) {
             currentFood = currentFood->next;
         }
     }
+
+    if (!tank.getListKoin().isEmpty()) {
+      elmt<koin>* temp = tank.getListKoin().first;
+      do {
+        draw_image("koin.png", temp->info.getX(), temp->info.getY());
+        temp = temp->next;
+      } while (temp != NULL);
+    }
 }
