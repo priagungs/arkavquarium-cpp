@@ -27,7 +27,6 @@ int main( int argc, char* args[] )
     std::string fps_text = "FPS: 0";
 
     bool running = true;
-    bool isclicked =  false;
 
     int counter = 50;
 
@@ -72,7 +71,6 @@ int main( int argc, char* args[] )
 
 
     while (running) {
-		//cout << control.uang;
         double now = time_since_start();
         double sec_since_last = now - prevtime;
         prevtime = now;
@@ -115,12 +113,10 @@ int main( int argc, char* args[] )
             }
         }
         double clickX;
-        double clickY;
         for (auto key : getclickmouse()) {
           switch (key) {
             case 1:
               clickX = getclickX();
-              clickY = getclickY();
               if (control.uang >= HARGA_MAKANAN) {
                 control.addMakanan(clickX);
               }
@@ -205,7 +201,6 @@ int main( int argc, char* args[] )
         draw_image("pointer.png", cx, cy);
         draw_text(cKoin.str(), 22, 30, 8, 0, 0, 0);
         draw_text(cTelur.str(), 22, SCREEN_WIDTH-170, 8, 0, 0, 0);
-        //draw_text(priceTelur.str(), 22, SCREEN_WIDTH-180, 20, 0, 0, 0);
         draw_text(priceInfo.str(), 20, 20, SCREEN_HEIGHT-30, 0, 0, 0);
         drawAquarium(control.getAkuarium());
         if (winStat==-1) {
