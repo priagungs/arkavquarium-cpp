@@ -18,8 +18,10 @@ void siput::move(double time) {
 void siput::moveTowardsTarget(double x, double y, double t) {
 	if(x > this->x){
 		this->x += t*speed;
+		this->setDirection(0);
 	}
 	else if(x < this->x){
 		this->x -= t*speed;
+		this->setDirection(M_PI);
 	}
 }

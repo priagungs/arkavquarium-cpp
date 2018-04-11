@@ -17,8 +17,8 @@ class siput : public bendaHidup{
 
 		//Override moveTowardsTarget (Kecepatan berbeda dari bendaHidup lain)
 		void move(double time);
-        void moveTowardsTarget(double x, double y, double t);
-	
+    void moveTowardsTarget(double x, double y, double t);
+
 	private:
 		const static int speed = 10;
 };

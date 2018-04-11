@@ -29,7 +29,7 @@ public:
     void processKoin();
 
     void addKoin(double,double,double);
-    void addGuppy(double X, double Y);
+    void addGuppy();
     void addPiranha();
     void addMakanan(double);
 

@@ -3,12 +3,14 @@
 #include "oop.hpp"
 #include <string>
 #include <iostream>
+#include <ctime>
 using namespace std;
 
 //Ctor
 bendaHidup::bendaHidup() {
-	x = rand()%SCREEN_WIDTH;
-	y = rand()%SCREEN_HEIGHT;
+	srand(time(NULL));
+	x = rand()%(SCREEN_WIDTH-1) +1;
+	y = rand()%(SCREEN_HEIGHT-50) + 1;
 	direction = rand()*M_PI*2/double(RAND_MAX);
 }
 

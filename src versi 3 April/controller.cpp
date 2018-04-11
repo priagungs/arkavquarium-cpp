@@ -3,7 +3,7 @@
 
 controller::controller(akuarium a){
     this->a = a;
-	uang = 700;
+	uang = 800;
 	levelTelur = 0;
 }
 
@@ -16,8 +16,8 @@ void controller::addKoin(double x, double y, double nilai){
     a.getListKoin().add(k);
 }
 
-void controller::addGuppy(double X, double Y){
-    guppy g(X,Y);
+void controller::addGuppy(){
+    guppy g;
     a.getListGuppy().add(g);
 	uang -= HARGA_GUPPY;
 }
@@ -66,17 +66,23 @@ void controller::processGuppy(){
             }
 
             //jika nabrak tembok
-            if(g.getX() <= 0 || g.getY() <= 0 || g.getX() >= SCREEN_WIDTH || g.getY() >= SCREEN_HEIGHT){
-                g.setDirection(g.getDirection()+M_PI);
+            if(g.getX() <= 0 || g.getY() <= 0 || g.getX() >= SCREEN_WIDTH || g.getY() >= SCREEN_HEIGHT-50){
+                if (g.getDirection()>=M_PI) {
+                  g.setDirection(g.getDirection()-M_PI);
+                } else {
+                  g.setDirection(g.getDirection()+M_PI);
+                }
             }
 
             // mengeluarkan koin bagi yang siap mengeluarkan koin
-            if(g.getHunger()%PERIODE_KOIN == 0){
+            cout << g.getMoveCounter() << endl;
+            if(g.getKoinCounter() <= 0){
                 switch(g.getTahap()){
                     case 1: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP1); break;
                     case 2: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP2); break;
                     case 3: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP3); break;
                 }
+                g.setKoinCounter(PERIODE_KOIN);
             }
         } while(temp != NULL);
     }
@@ -131,8 +137,12 @@ void controller::processPiranha() {
             }
 
             //jika nabrak tembok
-            if(p.getX() <= 0 || p.getY() <= 0 || p.getX() >= SCREEN_WIDTH || p.getY() >= SCREEN_HEIGHT){
+            if(p.getX() <= 0 || p.getY() <= 0 || p.getX() >= SCREEN_WIDTH || p.getY() >= SCREEN_HEIGHT-50){
+              if (p.getDirection()>=M_PI) {
+                p.setDirection(p.getDirection()-M_PI);
+              } else {
                 p.setDirection(p.getDirection()+M_PI);
+              }
             }
         } while(temp != NULL);
     }

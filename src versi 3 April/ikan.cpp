@@ -2,12 +2,14 @@
 #include "konstanta.hpp"
 #include <stdlib.h>
 #include <iostream>
+#include <time.h>
 using namespace std;
 
 ikan::ikan() {
-	hunger = GUPPY_HUNGER; //BERAPAAAA? EDIT LAGI INI
+	hunger = GUPPY_HUNGER;
 	tahap = 1;
 	foodCounter = 0;
+	srand((unsigned)time(NULL));
 	moveCounter = rand() % MAX_MOVE_COUNTER;
 	mati = false;
 	hungerState = false;
@@ -17,6 +19,7 @@ ikan::ikan() {
 int ikan::getHunger() {return hunger;}
 int ikan::getTahap() {return tahap;}
 int ikan::getfoodCounter() {return foodCounter;}
+int ikan::getMoveCounter() {return moveCounter;}
 bool ikan::isMati() {return mati;}
 void ikan::setHunger(int N) {hunger = N;}
 void ikan::setTahap(int N) {tahap =N;}
@@ -25,6 +28,7 @@ void ikan::setMati(bool B) {mati = B;}
 void ikan::decCounter(){
 	moveCounter--;
 	if(moveCounter <= 0){
+		srand((unsigned)time(NULL));
 		moveCounter = rand() % MAX_MOVE_COUNTER;
 	}
 }

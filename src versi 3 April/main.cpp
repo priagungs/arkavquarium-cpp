@@ -3,10 +3,13 @@
 #include "controller.hpp"
 #include "konstanta.hpp"
 #include <iostream>
+#include <string>
 #include <math.h>
 #include <sstream>
 
-const double speed = 50; // pixels per second
+using namespace std;
+
+const double speed = 100; // pixels per second
 
 void drawAquarium(akuarium tank);
 
@@ -14,9 +17,7 @@ int main( int argc, char* args[] )
 {
     akuarium a(SCREEN_WIDTH, SCREEN_HEIGHT);
     controller control(a);
-    control.addGuppy(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
-  //  control.addGuppy(SCREEN_HEIGHT/2, SCREEN_WIDTH/2);
-  //  control.addGuppy(SCREEN_WIDTH/2, SCREEN_WIDTH/2);
+    control.addGuppy();
 
     init();
     // Menghitung FPS
@@ -24,9 +25,9 @@ int main( int argc, char* args[] )
     double fpc_start = time_since_start();
     std::string fps_text = "FPS: 0";
 
-    //bool running = true;
+    bool running = true;
 
-        // Posisi ikan
+    // Posisi pointer
     double cy = SCREEN_HEIGHT / 2;
     double cx = SCREEN_WIDTH / 2;
 
@@ -34,20 +35,18 @@ int main( int argc, char* args[] )
     double prevtime = time_since_start();
 
 
-    while (control.levelTelur < 3) {
-		cout << control.uang;
+    while (control.levelTelur < 3 && running) {
+		//cout << control.uang;
         double now = time_since_start();
         double sec_since_last = now - prevtime;
         prevtime = now;
 
         handle_input();
-        //if (quit_pressed()) {
-            //running = false;
-        //}
+        if (quit_pressed()) {
+            running = false;
+        }
 
-        // Gerakkan ikan selama tombol panah ditekan
-        // Kecepatan dikalikan dengan perbedaan waktu supaya kecepatan ikan
-        // konstan pada komputer yang berbeda.
+        // Gerakkan kursor selama tombol panah ditekan
         for (auto key : get_pressed_keys()) {
             switch (key) {
                 case SDLK_UP:
@@ -81,7 +80,7 @@ int main( int argc, char* args[] )
                 break;
       			case SDLK_n:
       				if (control.uang >= HARGA_GUPPY) {
-      					control.addGuppy(cx,cy);
+      					control.addGuppy();
       				}
                 break;
             case SDLK_t:
@@ -116,18 +115,39 @@ int main( int argc, char* args[] )
             frames_passed = 0;
         }
         control.processAkuarium();
+
+        ostringstream cKoin;
+        ostringstream cTelur;
+        ostringstream priceInfo;
+        ostringstream priceTelur;
+
+        cKoin << "Koin : " <<  control.uang;
+        cTelur << "Level Telur : " << control.levelTelur;
+        priceInfo << "Food : " << HARGA_MAKANAN << " - M | Guppy : " << HARGA_GUPPY << " - N"
+                  << " | Piranha : " << HARGA_PIRANHA << " - P";
+        priceInfo << " | Telur : ";
+        if (control.levelTelur == 0) {
+          priceInfo << HARGA_TELUR1;
+        } else if (control.levelTelur == 1) {
+          priceInfo << HARGA_TELUR2;
+        } else if (control.levelTelur == 2) {
+          priceInfo << HARGA_TELUR3;
+        }
+        priceInfo << " - T";
+
         // Gambar ikan di posisi yang tepat.
         clear_screen();
-        //draw_image("background.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+        draw_image("background.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
         draw_image("pointer.png", cx, cy);
-        //draw_text("Panah untuk bergerak, r untuk reset, x untuk keluar", 18, 10, 10, 0, 0, 0);
-        //draw_text(fps_text, 18, 10, 30, 0, 0, 0);
-        //draw_image("ikan.png", cx, cy);
+        draw_text(cKoin.str(), 22, 30, 8, 0, 0, 0);
+        draw_text(cTelur.str(), 22, SCREEN_WIDTH-170, 8, 0, 0, 0);
+        //draw_text(priceTelur.str(), 22, SCREEN_WIDTH-180, 20, 0, 0, 0);
+        draw_text(priceInfo.str(), 20, 20, SCREEN_HEIGHT-30, 0, 0, 0);
         drawAquarium(control.getAkuarium());
         update_screen();
     }
 
-	cout << control.uang << endl;
+	//cout << control.uang << endl;
 
     close();
 

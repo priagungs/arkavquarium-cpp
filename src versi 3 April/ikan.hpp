@@ -16,6 +16,7 @@ class ikan{
 		int getHunger();
 		int getTahap();
 		int getfoodCounter();
+		int getMoveCounter();
 		bool getHungerState();
 		bool isMati();
 		void setHunger(int N);

@@ -20,11 +20,16 @@ class guppy : public ikan, public bendaHidup{
 		//Mengubah salah satu isi makanan edible pada list menjadi non edible
 		void move(double times); // gerak arah random selama time
 		void moveTowardsTarget(double x, double y, double times); //gerak arah x selama time
+
+		void setKoinCounter(int N);
+		int getKoinCounter();
+
 		bool operator==(guppy g);
 		bool operator!=(guppy g);
 
 	private:
 		const static int speed = 20; //bisa diubah value nya
+		int koinCounter;
 };
 
 #endif
