@@ -3,7 +3,7 @@
 
 controller::controller(akuarium a){
     this->a = a;
-	uang = 5000;
+	uang = 800;
 	levelTelur = 0;
 }
 
