@@ -31,14 +31,10 @@ class akuarium {
 		bool guppyAvailable();
 		bool makananAvailable();
 
-		void generateGuppy(guppy); //Membuat guppy baru dan menambahkan ke listGuppy
-		void generatePiranha(piranha); //Membuat piranha baru dan menambahkan ke listPiranha
-		void generateMakanan(makanan); //membuat makanan baru dan menambakan ke listMakanan
-
 		makanan searchMakanan(double x, double y); //Mengembalikan makanan terdekat dari x y yang terdapat makanan
 		guppy searchGuppy(double x, double y);  //Mengembalikan guppy terdekat dari x y yang terdapat Guppy
 		koin searchKoin(double x, double y); //Mengembalikan koin terdekat dari x y yang terdapat Koin
-	
+
 		void updateAkuarium();
 		void updateMakanan();
 		void updatePiranha();
