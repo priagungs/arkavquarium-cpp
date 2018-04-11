@@ -75,7 +75,6 @@ void controller::processGuppy(){
             }
 
             // mengeluarkan koin bagi yang siap mengeluarkan koin
-            cout << g.getMoveCounter() << endl;
             if(g.getKoinCounter() <= 0){
                 switch(g.getTahap()){
                     case 1: addKoin(g.getX(), g.getY(), g.getTahap()*NILAI_KOIN_TAHAP1); break;
@@ -123,10 +122,10 @@ void controller::processPiranha() {
             if(p.getHungerState() && a.guppyAvailable()){
                 guppy g = a.searchGuppy(p.getX(), p.getY());
                 if(abs(g.getX()-p.getX()) < 10 && abs(g.getY()-p.getY()) < 10){
-                    a.getListGuppy().remove(g);
                     p.setFoodCounter(p.getfoodCounter()+1);
                     p.setHunger(PIRANHA_HUNGER);
-	                  addKoin(p.getX(), p.getY(), NILAI_KOIN_TAHAP3);
+	                  addKoin(p.getX(), p.getY(), HARGA_GUPPY*(g.getTahap()+1));
+                    a.getListGuppy().remove(g);
                 }
                 else{
                     p.moveTowardsTarget(g.getX(), g.getY(),TIMESTAMP_IKAN);

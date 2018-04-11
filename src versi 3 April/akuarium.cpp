@@ -120,12 +120,10 @@ void akuarium::updateMakanan(){
 			elmt<makanan>* temp2 = temp;
             makanan &m = temp2->info;
 			temp = temp->next;
-			if(m.getY() >= SCREEN_HEIGHT && !listMakanan.isEmpty()){
+			if(m.getY() >= (SCREEN_HEIGHT-50) && !listMakanan.isEmpty()){
 				listMakanan.remove(m);
 			}
-            // if(!m.isEdible()){
-            //     listMakanan.remove(m);
-            // }
+			
         } while(temp != NULL);
     }
 }

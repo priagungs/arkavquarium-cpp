@@ -46,6 +46,11 @@ int main( int argc, char* args[] )
             running = false;
         }
 
+        if (control.getAkuarium().getListGuppy().isEmpty() &&
+            control.getAkuarium().getListPiranha().isEmpty() && control.uang<HARGA_GUPPY) {
+              running = false;
+        }
+
         // Gerakkan kursor selama tombol panah ditekan
         for (auto key : get_pressed_keys()) {
             switch (key) {
