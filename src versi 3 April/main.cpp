@@ -20,12 +20,48 @@ int main( int argc, char* args[] )
     control.addGuppy();
 
     init();
+
     // Menghitung FPS
     int frames_passed = 0;
     double fpc_start = time_since_start();
     std::string fps_text = "FPS: 0";
 
     bool running = true;
+    bool isclicked =  false;
+
+    int counter = 50;
+
+    int winStat = 0;
+
+    while (running) {
+      handle_input();
+
+      if (quit_pressed()) {
+          running = false;
+      }
+
+      for (auto key : get_tapped_keys()) {
+          switch (key) {
+          case SDLK_RETURN:
+              running = false;
+              break;
+          }
+      }
+
+      clear_screen();
+      draw_image("menu.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+      if (counter>=0) {
+        draw_image("enter.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2 + 100);
+      } else {
+        if (counter==-50) {
+          counter=50;
+        }
+      }
+      counter--;
+      update_screen();
+    }
+
+    running = true;
 
     // Posisi pointer
     double cy = SCREEN_HEIGHT / 2;
@@ -35,7 +71,7 @@ int main( int argc, char* args[] )
     double prevtime = time_since_start();
 
 
-    while (control.levelTelur < 3 && running) {
+    while (running) {
 		//cout << control.uang;
         double now = time_since_start();
         double sec_since_last = now - prevtime;
@@ -48,25 +84,53 @@ int main( int argc, char* args[] )
 
         if (control.getAkuarium().getListGuppy().isEmpty() &&
             control.getAkuarium().getListPiranha().isEmpty() && control.uang<HARGA_GUPPY) {
-              running = false;
+              winStat = -1;
+        } else if (control.levelTelur == 3) {
+              winStat = 1;
         }
 
         // Gerakkan kursor selama tombol panah ditekan
         for (auto key : get_pressed_keys()) {
             switch (key) {
-                case SDLK_UP:
-                    cy -= speed * sec_since_last;
-                    break;
+                case SDLK_UP :
+                    if (cy>=0) {
+                      cy -= speed * sec_since_last;
+                    }
+                      break;
                 case SDLK_DOWN:
-                    cy += speed * sec_since_last;
+                    if (cy<=SCREEN_HEIGHT) {
+                      cy += speed * sec_since_last;
+                    }
                     break;
                 case SDLK_LEFT:
-                    cx -= speed * sec_since_last;
+                    if (cx>=0) {
+                      cx -= speed * sec_since_last;
+                    }
                     break;
                 case SDLK_RIGHT:
-                    cx += speed * sec_since_last;
+                    if (cx<=SCREEN_WIDTH) {
+                      cx += speed * sec_since_last;
+                    }
                     break;
             }
+        }
+        double clickX;
+        double clickY;
+        for (auto key : getclickmouse()) {
+          switch (key) {
+            case 1:
+              clickX = getclickX();
+              clickY = getclickY();
+              if (control.uang >= HARGA_MAKANAN) {
+                isclicked = true;
+              }
+              break;
+          }
+        }
+
+        if (isclicked) {
+          control.addMakanan(clickX);
+          isclicked = false;
         }
 
         // Proses masukan yang bersifat "tombol"
@@ -149,10 +213,13 @@ int main( int argc, char* args[] )
         //draw_text(priceTelur.str(), 22, SCREEN_WIDTH-180, 20, 0, 0, 0);
         draw_text(priceInfo.str(), 20, 20, SCREEN_HEIGHT-30, 0, 0, 0);
         drawAquarium(control.getAkuarium());
+        if (winStat==-1) {
+          draw_image("lose.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+        } else if (winStat==1) {
+          draw_image("win.png", SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
+        }
         update_screen();
     }
-
-	//cout << control.uang << endl;
 
     close();
 

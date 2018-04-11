@@ -3,7 +3,7 @@
 
 controller::controller(akuarium a){
     this->a = a;
-	uang = 800;
+	uang = 5000;
 	levelTelur = 0;
 }
 
@@ -52,7 +52,7 @@ void controller::processGuppy(){
             //mencari makan untuk yang sudah lapar
             if(g.getHungerState() && a.makananAvailable()){
                 makanan m = a.searchMakanan(g.getX(), g.getY());
-                if(abs(m.getX()-g.getX()) < 0.1 && abs(m.getY()-g.getY()) < 0.1){
+                if(abs(m.getX()-g.getX()) < 1 && abs(m.getY()-g.getY()) < 1){
                     a.getListMakanan().remove(m);
                     g.setFoodCounter(g.getfoodCounter()+1);
                     g.setHunger(GUPPY_HUNGER);

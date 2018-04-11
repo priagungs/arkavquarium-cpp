@@ -24,4 +24,3 @@ bool makanan::operator==(makanan m) {
 bool makanan::operator!=(makanan m) {
 	return (getX() != m.getX() || getY() != m.getY());
 }
-
