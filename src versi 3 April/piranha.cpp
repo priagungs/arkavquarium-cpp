@@ -1,7 +1,6 @@
 #include "piranha.hpp"
 #include "ikan.hpp"
 #include "bendaHidup.hpp"
-#include "piranha.hpp"
 #include "List.hpp"
 #include "koin.hpp"
 #include <iostream>
