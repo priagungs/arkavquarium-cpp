@@ -122,15 +122,10 @@ int main( int argc, char* args[] )
               clickX = getclickX();
               clickY = getclickY();
               if (control.uang >= HARGA_MAKANAN) {
-                isclicked = true;
+                control.addMakanan(clickX);
               }
               break;
           }
-        }
-
-        if (isclicked) {
-          control.addMakanan(clickX);
-          isclicked = false;
         }
 
         // Proses masukan yang bersifat "tombol"

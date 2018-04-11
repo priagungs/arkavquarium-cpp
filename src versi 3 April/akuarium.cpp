@@ -110,7 +110,6 @@ void akuarium::updateAkuarium(){
 	updateMakanan();
 	updatePiranha();
 	updateGuppy();
-	// updateKoin();
 }
 
 void akuarium::updateMakanan(){
@@ -123,7 +122,7 @@ void akuarium::updateMakanan(){
 			if(m.getY() >= (SCREEN_HEIGHT-50) && !listMakanan.isEmpty()){
 				listMakanan.remove(m);
 			}
-			
+
         } while(temp != NULL);
     }
 }
